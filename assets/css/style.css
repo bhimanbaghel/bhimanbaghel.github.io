@@ -8,7 +8,6 @@
 
 .heading h3{
 	color: ffffff;
-    	font-size: 14px;
 }
 
 .cd-words-wrapper {
@@ -42,7 +41,7 @@ xclip
   display: inline-block;
   padding: .2em 0;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 25px;
 
 }
 .cd-headline.clip span b{
