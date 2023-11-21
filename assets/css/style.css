@@ -44,6 +44,13 @@ xclip
   font-size: 25px;
 
 }
+
+@media (max-width: 768px)
+.cd-headline.clip span {
+  font-size: 15px;
+
+}
+
 .cd-headline.clip span b{
 	text-transform: uppercase;
 }
