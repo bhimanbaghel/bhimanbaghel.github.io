@@ -23,9 +23,6 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Export Static Files
-        run: npm run export
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
