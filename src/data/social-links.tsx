@@ -1,4 +1,4 @@
-import { IconMail, IconFileCv, IconBrandLinkedin, IconSchool, IconBrandGithub } from "@tabler/icons-react";
+import { IconMail, IconFileCv, IconBrandLinkedin, IconSchool, IconBrandGithub, IconMapPin } from "@tabler/icons-react";
 
 interface SocialLink {
     href: string;
@@ -46,6 +46,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
         hoverColorClass: "hover:text-yellow-300",
         copyContent: "bkb45@pitt.edu",
         hoverBgColorClass: "bg-yellow-300/10", 
+    },
+    {
+        href: "https://maps.app.goo.gl/2G2J6e3oSeX6sjis7",
+        icon: <IconMapPin className="w-10 h-10" />,
+        label: "Office",
+        hoverColorClass: "hover:text-green-400",
+        hoverBgColorClass: "bg-green-400/10", 
     },
 
 ];

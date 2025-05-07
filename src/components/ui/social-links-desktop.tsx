@@ -23,7 +23,7 @@ export const SocialLinksDesktop = () => {
   };
 
   return (
-    <div className="hidden md:flex fixed top-1/6 flex-col items-center gap-19 z-50"
+    <div className="hidden md:flex fixed top-1/14 flex-col items-center gap-19 z-50"
     style={{
         right: "calc((100vw - 1536px)/2 + 8rem)", // dynamically stick beside Bento
       }}
