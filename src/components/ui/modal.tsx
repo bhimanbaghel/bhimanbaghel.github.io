@@ -37,14 +37,24 @@ export const Modal = ({
     <AnimatePresence>
       {open && (
         <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+        style={{ 
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backdropFilter: 'blur(15px)',
+          WebkitBackdropFilter: 'blur(15px)'
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
           <motion.div
-            className="bg-neutral-900/20 backdrop-blur-lg rounded-2xl shadow-2xl max-w-4xl w-full mx-4 p-6 flex flex-col md:flex-row relative border border-white/10 text-white"
+            className="rounded-2xl shadow-2xl max-w-4xl w-full mx-4 p-6 flex flex-col md:flex-row relative border border-white/10 text-white"
+            style={{ 
+              backgroundColor: 'rgba(23, 23, 23, 0.8)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)'
+            }}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}

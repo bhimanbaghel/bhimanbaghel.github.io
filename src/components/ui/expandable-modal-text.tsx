@@ -41,6 +41,7 @@ export const ExpandableModalText = ({
           "text-sm font-normal text-neutral-300 leading-relaxed " +
           (!expanded ? "line-clamp-12" : "")
         }
+        style={{ color: 'rgba(212, 212, 212, 0.9)' }}
       >
         {children}
       </div>
@@ -50,6 +51,7 @@ export const ExpandableModalText = ({
         <button
           onClick={handleToggle}
           className="inline text-sm text-neutral-300 hover:text-white hover:underline underline-offset-2 transition-colors duration-200"
+          style={{ color: 'rgba(212, 212, 212, 0.9)' }}
         >
           {isMobile && expanded ? "See less" : "See more"}
         </button>

@@ -8,6 +8,28 @@ import { cn } from "@/lib/utils";
 
 export const SocialLinksMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // Set mounted state
+    setIsMounted(true);
+    
+    // Handle determining if mobile view
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Listen for resize events
+    window.addEventListener("resize", checkMobile);
+    
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -23,8 +45,11 @@ export const SocialLinksMobile = () => {
     };
   }, [isOpen]);
 
+  // Don't render anything until component is mounted and we've checked device type
+  if (!isMounted || !isMobile) return null;
+
   return (
-    <div className="w-16 fixed top-4 right-4 z-50 md:hidden flex flex-col items-center">
+    <div className="w-16 fixed top-4 right-4 z-50 flex flex-col items-center">
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
