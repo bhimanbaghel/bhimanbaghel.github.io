@@ -20,7 +20,7 @@ export const NewsList = () => {
         ref={scrollRef}
         role="region"
         aria-label="News List"
-        className="mt-0 pt-0 overflow-y-auto flex-1 pr-0 max-h-[15rem] custom-scroll"
+        className="mt-0 pt-0 overflow-y-auto flex-1 pr-0 max-h-[17rem] custom-scroll"
       >
         <div className="relative pl-4 flex flex-col">
           {/* Vertical line */}
