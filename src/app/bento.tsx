@@ -97,6 +97,4 @@ const items = [
       header: null,
       icon: <IconAi className="h-6 w-6 text-neutral-500" />,
     },
-    
-    
   ];
