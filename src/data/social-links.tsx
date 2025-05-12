@@ -33,7 +33,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     },
 
     {
-        href: "https://bhimanbaghel.github.io/",
+        href: "https://github.com/bhimanbaghel",
         icon: <IconBrandGithub className="w-10 h-10" />,
         label: "Github",
         hoverColorClass: "hover:text-pink-400",
