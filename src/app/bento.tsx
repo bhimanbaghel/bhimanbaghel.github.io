@@ -1,6 +1,7 @@
 //bento.tsx
 // import { cn } from "@/lib/utils";
 import React from "react";
+import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { ExpandableModalText } from "@/components/ui/expandable-modal-text";
 import { PublicationList } from "@/components/ui/publication-list";
@@ -36,9 +37,11 @@ const items = [
       description: (
         <ExpandableModalText
           image={
-                <img
+                <Image
         src="/bkb.png"
         alt="Profile picture"
+        width={360}
+        height={400}
         className="w-[280px] md:w-[320px] lg:w-[360px] h-auto rounded-xl object-cover"
       />
         }
@@ -56,7 +59,7 @@ const items = [
         <br />
         I formalized key limitations in locate-and-edit algorithms, specifically <em>UnderEdit</em> and <em>OverEdit</em>, and developed methods to address them. This work led to a <strong>38</strong> <em>percentage point improvement</em> over the previous state-of-the-art.
         <br />
-        More recently, I've begun exploring editing techniques to enhance the legal reasoning capabilities of LLMs, with the goal of making them more accurate, interpretable, and trustworthy.
+        More recently, I&apos;ve begun exploring editing techniques to enhance the legal reasoning capabilities of LLMs, with the goal of making them more accurate, interpretable, and trustworthy.
         
       </ExpandableModalText>
       ),
@@ -68,9 +71,11 @@ const items = [
               filter: "drop-shadow(0 0 8px rgba(144, 238, 144, 0.5))",
             }}
           >
-            <img 
+            <Image 
               src="/bkb.png" 
               alt="Profile picture" 
+              width={400}
+              height={400}
               className="w-full h-full object-cover rounded-xl"
             />
           </div>
