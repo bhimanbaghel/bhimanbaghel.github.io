@@ -5,6 +5,7 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { ExpandableModalText } from "@/components/ui/expandable-modal-text";
 import { PublicationList } from "@/components/ui/publication-list";
 import { NewsList } from "@/components/ui/news-list";
+import { ProjectCarousel } from "@/components/ui/project-carousel";
 import {
   IconSchool,
   IconBadge,
@@ -55,7 +56,7 @@ const items = [
         <br />
         I formalized key limitations in locate-and-edit algorithms, specifically <em>UnderEdit</em> and <em>OverEdit</em>, and developed methods to address them. This work led to a <strong>38</strong> <em>percentage point improvement</em> over the previous state-of-the-art.
         <br />
-        More recently, I’ve begun exploring editing techniques to enhance the legal reasoning capabilities of LLMs, with the goal of making them more accurate, interpretable, and trustworthy.
+        More recently, I've begun exploring editing techniques to enhance the legal reasoning capabilities of LLMs, with the goal of making them more accurate, interpretable, and trustworthy.
         
       </ExpandableModalText>
       ),
@@ -93,7 +94,7 @@ const items = [
     },
     {
       title: "Projects",
-      description: "Coming Soon!",
+      description: <ProjectCarousel />,
       header: null,
       icon: <IconAi className="h-6 w-6 text-neutral-500" />,
     },
