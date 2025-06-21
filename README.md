@@ -1,9 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bhiman Kumar Baghel - Personal Portfolio Website
 
-## Getting Started
+A modern, interactive personal portfolio website showcasing my research, publications, and projects as a PhD student in Computer Science at the University of Pittsburgh.
 
-First, run the development server:
+## 🌟 Features
 
+- **Modern Bento Grid Layout**: Clean, responsive design with animated background beams
+- **Interactive Profile Section**: Expandable modal with detailed biography and research focus
+- **Publications & Patents**: Comprehensive list of academic work and patents
+- **Project Showcase**: Interactive carousel displaying key research projects
+- **News Section**: Latest updates and achievements
+- **Social Links**: Desktop and mobile-optimized social media integration
+- **Responsive Design**: Optimized for all device sizes
+- **Dark Theme**: Modern dark UI with subtle animations
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15.2.3](https://nextjs.org/) with App Router
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **Animations**: [Framer Motion 12.9](https://www.framer.com/motion/)
+- **UI Components**: 
+  - [Radix UI](https://www.radix-ui.com/) for accessible primitives
+  - [Tabler Icons](https://tabler-icons.io/) for consistent iconography
+  - [Lucide React](https://lucide.dev/) for additional icons
+- **Development**: 
+  - ESLint for code quality
+  - TypeScript for type safety
+  - Turbopack for fast development builds
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/personal-website.git
+cd personal-website
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
@@ -14,23 +65,57 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── src/
+│   ├── app/                 # Next.js app directory
+│   │   ├── page.tsx        # Main page component
+│   │   ├── background.tsx  # Background with beams effect
+│   │   ├── bento.tsx       # Bento grid layout
+│   │   └── layout.tsx      # Root layout
+│   ├── components/         # Reusable UI components
+│   │   └── ui/            # UI component library
+│   ├── data/              # Data files for content
+│   └── lib/               # Utility functions
+├── public/                # Static assets
+│   ├── bkb.png           # Profile picture
+│   ├── Bhiman_CV.pdf     # Resume/CV
+│   └── ...               # Other assets
+└── ...configuration files
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Bento Grid**: Responsive grid layout for showcasing different sections
+- **Background Beams**: Animated background effect using Framer Motion
+- **Expandable Modal**: Interactive profile section with detailed information
+- **Publication List**: Academic publications and patents display
+- **Project Carousel**: Interactive showcase of research projects
+- **Social Links**: Desktop and mobile social media integration
 
-## Deploy on Vercel
+## 📧 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email**: bkb45@pitt.edu
+- **LinkedIn**: [linkedin.com/in/bhiman-kumar-baghel](https://www.linkedin.com/in/bhiman-kumar-baghel/)
+- **GitHub**: [github.com/bhimanbaghel](https://github.com/bhimanbaghel)
+- **Google Scholar**: [scholar.google.com/citations?user=ee6IULAAAAAJ](https://scholar.google.com/citations?user=ee6IULAAAAAJ&hl=en)
+- **Office**: [University of Pittsburgh](https://maps.app.goo.gl/2G2J6e3oSeX6sjis7)
+- **CV**: [Download CV](./public/Bhiman_CV.pdf)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ by Bhiman Kumar Baghel
