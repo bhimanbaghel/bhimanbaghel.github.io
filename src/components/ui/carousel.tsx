@@ -17,9 +17,11 @@ interface SlideProps {
   index: number;
   current: number;
   handleSlideClick: (index: number) => void;
+  isClone?: boolean;
+  originalIndex?: number;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
+const Slide = ({ slide, index, current, handleSlideClick, isClone = false, originalIndex }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
 
   const xRef = useRef(0);
@@ -68,17 +70,23 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
   const { src, title, description, tools, githubLink, youtubeLink } = slide;
 
+  // For clones, use the original index for click handling
+  const clickIndex = isClone ? (originalIndex ?? index) : index;
+  
+  // Determine if this slide should be considered "current" based on the actual position
+  const isCurrentSlide = current === index;
+
   return (
     <div className="[perspective:600px] [transform-style:preserve-3d]">
       <li
         ref={slideRef}
-        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-72 h-56 mx-2 z-0 group cursor-pointer"
-        onClick={() => handleSlideClick(index)}
+        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-72 h-56 z-0 group cursor-pointer"
+        onClick={() => handleSlideClick(clickIndex)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
           transform:
-            current !== index
+            !isCurrentSlide
               ? "scale(0.95) rotateX(4deg)"
               : "scale(1) rotateX(0deg)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -89,7 +97,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           className="absolute top-0 left-0 w-full h-full bg-[#1D1F2F] rounded-lg overflow-hidden transition-all duration-150 ease-out"
           style={{
             transform:
-              current === index
+              isCurrentSlide
                 ? "translate3d(calc(var(--x) / 50), calc(var(--y) / 50), 0)"
                 : "none",
           }}
@@ -97,7 +105,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           <Image
             className="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-600 ease-in-out"
             style={{
-              opacity: current === index ? 1 : 0.7,
+              opacity: isCurrentSlide ? 1 : 0.7,
             }}
             alt={title}
             src={src}
@@ -105,7 +113,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
             onLoad={imageLoaded}
             priority
           />
-          {current === index && (
+          {isCurrentSlide && (
             <div className="absolute inset-0 bg-black/20 transition-all duration-1000" />
           )}
           
@@ -149,7 +157,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
         <article
           className={`relative p-3 transition-opacity duration-1000 ease-in-out group-hover:opacity-0 ${
-            current === index ? "opacity-100 visible" : "opacity-0 invisible"
+            isCurrentSlide ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
           <h2 className="text-base font-semibold relative text-center">
@@ -190,25 +198,101 @@ interface CarouselProps {
 }
 
 export function Carousel({ slides }: CarouselProps) {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1); // Start at 1 (first real slide)
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const carouselRef = useRef<HTMLUListElement>(null);
+
+  // Create circular slides array with clones
+  const circularSlides = [
+    slides[slides.length - 1], // Clone of last slide at beginning
+    ...slides, // Original slides
+    slides[0], // Clone of first slide at end
+  ];
 
   const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? slides.length - 1 : previous);
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrent(prev => prev - 1);
   };
 
   const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === slides.length ? 0 : next);
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrent(prev => prev + 1);
   };
 
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
+  const handleSlideClick = (originalIndex: number) => {
+    if (isTransitioning) return;
+    
+    // Find the real slide index (add 1 because of the clone at the beginning)
+    const targetIndex = originalIndex + 1;
+    if (current !== targetIndex) {
+      setIsTransitioning(true);
+      setCurrent(targetIndex);
     }
   };
 
+  // Handle seamless looping
+  useEffect(() => {
+    if (!isTransitioning) return;
+
+    const timer = setTimeout(() => {
+      if (current === 0) {
+        // We're at the clone of the last slide, jump to the real last slide
+        if (carouselRef.current) {
+          carouselRef.current.style.transition = 'none';
+          // Temporarily set transform to the real last slide position
+          const slideWidth = 100 / slides.length;
+          const lastSlideTransform = slides.length * slideWidth; // Account for clone at beginning
+          carouselRef.current.style.transform = `translateX(-${lastSlideTransform}%)`;
+        }
+        setCurrent(slides.length);
+        // Small delay to ensure the DOM update completes
+        requestAnimationFrame(() => {
+          if (carouselRef.current) {
+            carouselRef.current.style.transition = '';
+          }
+        });
+        setIsTransitioning(false);
+      } else if (current === slides.length + 1) {
+        // We're at the clone of the first slide, jump to the real first slide
+        if (carouselRef.current) {
+          carouselRef.current.style.transition = 'none';
+          // Temporarily set transform to the first slide position
+          const slideWidth = 100 / slides.length;
+          const firstSlideTransform = 1 * slideWidth; // Account for clone at beginning
+          carouselRef.current.style.transform = `translateX(-${firstSlideTransform}%)`;
+        }
+        setCurrent(1);
+        // Small delay to ensure the DOM update completes
+        requestAnimationFrame(() => {
+          if (carouselRef.current) {
+            carouselRef.current.style.transition = '';
+          }
+        });
+        setIsTransitioning(false);
+      } else {
+        setIsTransitioning(false);
+      }
+    }, 300); // Match this with transition duration
+
+    return () => clearTimeout(timer);
+  }, [current, slides.length, isTransitioning]);
+
   const id = useId();
+
+  // Calculate transform to show slight portions of adjacent slides
+  const getTransformX = () => {
+    // Use original slides length for calculations to maintain consistent visibility
+    const slideWidth = 100 / slides.length;
+    // Since we have a clone at the beginning, we need to account for that
+    // current = 1 should show the first real slide (index 1 in circularSlides)
+    // So we need to translate by the width of one slide to skip the clone
+    const baseTransform = current * slideWidth; // This will properly position the slides
+    return baseTransform;
+  };
 
   return (
     <div
@@ -217,20 +301,54 @@ export function Carousel({ slides }: CarouselProps) {
     >
       <div className="relative h-56 overflow-hidden">
         <ul
-          className="absolute flex mx-[-0.5rem] transition-transform duration-1000 ease-in-out h-full items-center"
+          ref={carouselRef}
+          className="absolute flex h-full items-center"
           style={{
-            transform: `translateX(-${current * (100 / slides.length)}%)`,
+            transform: `translateX(-${getTransformX()}%)`,
+            transition: isTransitioning ? 'transform 300ms ease-in-out' : 'none',
+            width: `${slides.length * 100}%`, // Base width on original slides count
+            gap: '0.0rem',
           }}
         >
-          {slides.map((slide, index) => (
-            <Slide
-              key={index}
-              slide={slide}
-              index={index}
-              current={current}
-              handleSlideClick={handleSlideClick}
-            />
-          ))}
+          {circularSlides.map((slide, index) => {
+            // Determine if this is a clone and what the original index is
+            let isClone = false;
+            let originalIndex = index;
+            
+            if (index === 0) {
+              // Clone of last slide at beginning
+              isClone = true;
+              originalIndex = slides.length - 1;
+            } else if (index === circularSlides.length - 1) {
+              // Clone of first slide at end
+              isClone = true;
+              originalIndex = 0;
+            } else {
+              // Regular slide
+              originalIndex = index - 1;
+            }
+
+            return (
+              <div
+                key={isClone ? `slide-wrapper-clone-${originalIndex}` : `slide-wrapper-${index}`}
+                style={{
+                  minWidth: `${100 / slides.length}%`, // Base width on original slides count
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <Slide
+                  key={isClone ? `clone-${originalIndex}` : index}
+                  slide={slide}
+                  index={index}
+                  current={current}
+                  handleSlideClick={handleSlideClick}
+                  isClone={isClone}
+                  originalIndex={originalIndex}
+                />
+              </div>
+            );
+          })}
         </ul>
       </div>
 
