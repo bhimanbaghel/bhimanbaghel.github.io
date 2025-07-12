@@ -11,7 +11,7 @@ interface SocialLink {
   
 export const SOCIAL_LINKS: SocialLink[] = [
     {
-        href: "/Bhiman_CV.pdf", // <-- Path to your CV file inside public/
+        href: "/Bhiman_Resume.pdf", // <-- Path to your CV file inside public/
         icon: <IconFileCv className="w-10 h-10" />, // <-- New Icon
         label: "Download CV",
         hoverColorClass: "hover:text-cyan-400",
