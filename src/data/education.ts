@@ -15,7 +15,7 @@ export const educationData: EducationItem[] = [
     id: 1,
     university: "University Of Pittsburgh, PA, USA",
     degree: "PhD in Computer Science",
-    year: "Aug. 2023 - Present",
+    year: "August 2023 - April 2027",
     gpa: "3.5/5",
     advisor: "Dr. Xiang (Lorraine) Li",
     logo: "/pitt.png" // Replace with University of Pittsburgh logo
@@ -24,7 +24,7 @@ export const educationData: EducationItem[] = [
     id: 2,
     university: "Indian Institute of Technology (IIT), Kharagpur, India",
     degree: "M.Tech in Computer Science",
-    year: "Jul. 2017 - May 2019",
+    year: "July 2017 - May 2019",
     gpa: "8.82/10",
     thesis: "DCLL - A Deep Learning Model for Travel Time and Traffic Congestion Prediction",
     logo: "/iit-kgp.png" // Replace with IIT Kharagpur logo
@@ -33,7 +33,7 @@ export const educationData: EducationItem[] = [
     id: 3,
     university: "National Institute Of Technology (NIT), Jalandhar, India",
     degree: "B.Tech in Computer Science",
-    year: "Jun. 2013 - Jun. 2017",
+    year: "June 2013 - June 2017",
     gpa: "6.82/10",
     logo: "/nitj.png" // Replace with NIT Jalandhar logo
   }

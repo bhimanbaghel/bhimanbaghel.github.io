@@ -8,6 +8,7 @@ import { PublicationList } from "@/components/ui/publication-list";
 import { NewsList } from "@/components/ui/news-list";
 import { ProjectCarousel } from "@/components/ui/project-carousel";
 import { EducationList } from "@/components/ui/education-list";
+import { ExperienceList } from "@/components/ui/experience-list";
 import { ProfileDescription } from "@/data/profile-description";
 import {
   IconSchool,
@@ -101,12 +102,8 @@ const items = [
       icon: <IconCertificate className="h-6 w-6 text-neutral-500" />,
     },
     {
-      title: "Experience",
-      description: (
-        <div className="text-neutral-600 dark:text-neutral-400">
-          Coming soon...
-        </div>
-      ),
+      title: "Professional Experience",
+      description: <ExperienceList />,
       header: null,
       icon: <IconBuilding className="h-6 w-6 text-neutral-500" />,
     },
