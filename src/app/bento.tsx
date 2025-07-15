@@ -9,6 +9,7 @@ import { NewsList } from "@/components/ui/news-list";
 import { ProjectCarousel } from "@/components/ui/project-carousel";
 import { EducationList } from "@/components/ui/education-list";
 import { ExperienceList } from "@/components/ui/experience-list";
+import { HonorsList } from "@/components/ui/honors-list";
 import { ProfileDescription } from "@/data/profile-description";
 import {
   IconSchool,
@@ -109,11 +110,7 @@ const items = [
     },
     {
       title: "Honors and Awards",
-      description: (
-        <div className="text-neutral-600 dark:text-neutral-400">
-          Coming soon...
-        </div>
-      ),
+      description: <HonorsList />,
       header: null,
       icon: <IconAward className="h-6 w-6 text-neutral-500" />,
     },
