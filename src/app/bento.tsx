@@ -7,12 +7,16 @@ import { ExpandableModalText } from "@/components/ui/expandable-modal-text";
 import { PublicationList } from "@/components/ui/publication-list";
 import { NewsList } from "@/components/ui/news-list";
 import { ProjectCarousel } from "@/components/ui/project-carousel";
+import { EducationList } from "@/components/ui/education-list";
 import { ProfileDescription } from "@/data/profile-description";
 import {
   IconSchool,
   IconBadge,
   IconNews,
   IconAi,
+  IconCertificate,
+  IconBuilding,
+  IconAward,
 } from "@tabler/icons-react";
 
 export function BentoGridDemo() {
@@ -31,7 +35,7 @@ export function BentoGridDemo() {
       </BentoGrid>
     );
 }
-// Modified items array with just 4 items
+// Modified items array with 7 items
 const items = [
     {
       title: "Bhiman Kumar Baghel",
@@ -89,5 +93,31 @@ const items = [
       description: <ProjectCarousel />,
       header: null,
       icon: <IconAi className="h-6 w-6 text-neutral-500" />,
+    },
+    {
+      title: "Education",
+      description: <EducationList />,
+      header: null,
+      icon: <IconCertificate className="h-6 w-6 text-neutral-500" />,
+    },
+    {
+      title: "Experience",
+      description: (
+        <div className="text-neutral-600 dark:text-neutral-400">
+          Coming soon...
+        </div>
+      ),
+      header: null,
+      icon: <IconBuilding className="h-6 w-6 text-neutral-500" />,
+    },
+    {
+      title: "Honors and Awards",
+      description: (
+        <div className="text-neutral-600 dark:text-neutral-400">
+          Coming soon...
+        </div>
+      ),
+      header: null,
+      icon: <IconAward className="h-6 w-6 text-neutral-500" />,
     },
   ];
