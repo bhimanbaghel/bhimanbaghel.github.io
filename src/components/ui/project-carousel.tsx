@@ -36,6 +36,14 @@ export function ProjectCarousel() {
       githubLink: "https://github.com/bhimanbaghel/SentiMe", // Replace with actual GitHub link
       youtubeLink: "#", // Replace with actual YouTube link
     },
+    {
+      title: "LoRA Fine-tuning Framework",
+      description: "A modular and extensible LoRA fine-tuning framework for question-answering tasks with PEFT integration. Demonstrates parameter-efficient training with configurable LoRA parameters and structured evaluation metrics.",
+      tools: "PyTorch, Transformers, PEFT, LoRA, Datasets, Pandas",
+      src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=3465&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      githubLink: "https://github.com/bhimanbaghel/lora-fine-tuning",
+      youtubeLink: "#", // Replace with actual YouTube link
+    },
   ];
 
   return (
