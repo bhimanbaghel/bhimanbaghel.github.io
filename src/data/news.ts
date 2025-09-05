@@ -2,6 +2,11 @@ import { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {
+    date: "Aug 2025",
+    text: `🎉 Paper publication - "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing" accepted in EMNLP 2025 as Findings`,
+    link: "https://arxiv.org/abs/2503.11895",
+  },
+  {
     date: "Dec 2024",
     text: `🎉 A1 US Patent published - "Methods and systems for enabling seamless indirect interactions"`,
     link: "https://patents.google.com/patent/US20240087575A1/en",
