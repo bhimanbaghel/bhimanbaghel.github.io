@@ -27,7 +27,7 @@ export interface Publication {
   applicationNo?: string;
 }
 
-const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "USPTO"];
+const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "USPTO", "EMNLP"];
 
 export const PublicationList = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
