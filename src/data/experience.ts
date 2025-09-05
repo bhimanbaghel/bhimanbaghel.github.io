@@ -12,6 +12,18 @@ export interface ExperienceItem {
 export const experienceData: ExperienceItem[] = [
   {
     id: 1,
+    company: "Amazon",
+    position: "Applied Scientist Intern",
+    duration: "September 2025 – Present",
+    location: "Seattle, WA, USA",
+    logo: "/amazon.png",
+    description: [
+      "• Selected for a competitive internship with the People eXperience and Technology Central Science (PXTCS) team.",
+      "• Internship will focus on Generative AI applications and infrastructure with emphasis on enterprise knowledge integration, while ensuring fairness and privacy are maintained."
+    ]
+  },
+  {
+    id: 2,
     company: "University of Pittsburgh",
     position: "Graduate Research Assistant",
     duration: "August 2024 – Present",
@@ -25,12 +37,12 @@ export const experienceData: ExperienceItem[] = [
     ]
   },
   {
-    id: 2,
+    id: 3 ,
     company: "Samsung Research",
     position: "Lead NLP Engineer",
     duration: "June 2019 – August 2023",
     location: "Bangalore, India",
-    logo: "/samsung.png", // Placeholder, you can add Samsung logo
+    logo: "/samsung.png",
     description: [
       "• Spearheaded CoSMIC, a BERT-based multi-intent NLU engine for SmartThings; shipped to 100M+ devices, reaching 96% intent accuracy and cutting live NLU errors by 67%",
       "• Localized and scaled CoSMIC for the Korean market, mentoring a cross-site team and re-engineering tokenization to lift intent-slot F₁ by 25%",
@@ -38,12 +50,12 @@ export const experienceData: ExperienceItem[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     company: "IBM",
     position: "Machine Learning Intern",
     duration: "May 2018 – July 2018",
     location: "Bangalore, India",
-    logo: "/ibm.png", // Placeholder, you can add IBM logo
+    logo: "/ibm.png",
     description: [
       "• Prototyped an LSTM-based anomaly-prediction engine that monitors 33 infrastructure health metrics and launches auto-remediation scripts, forecasting critical failures with 97% precision"
     ]
