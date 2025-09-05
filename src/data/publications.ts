@@ -4,7 +4,7 @@ export const PUBLICATIONS: Publication[] = [
   {
     title: "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing.",
     link: "https://arxiv.org/abs/2503.11895",
-    authors: "Bhiman Kumar Baghel, Scott M. Jordan, Zheyuan Ryan Shi, Xiang Lorraine",
+    authors: "Bhiman Kumar Baghel, Scott M. Jordan, Zheyuan Ryan Shi, Xiang Lorraine Li",
     venue: "EMNLP 2025",
     format: "Findings",
     category: "Model Editing",
