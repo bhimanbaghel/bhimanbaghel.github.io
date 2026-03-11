@@ -21,7 +21,7 @@ export function EducationList() {
               {/* Logo Column */}
               <div className="flex-shrink-0">
                 <div
-                  className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900/80 ${education.id === 2 ? "p-1" : ""}`}
+                  className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-neutral-800 ${education.id === 2 ? "bg-white p-1" : "bg-neutral-900/80"}`}
                 >
                   <Image
                     src={education.logo}
