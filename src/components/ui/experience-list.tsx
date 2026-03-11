@@ -32,7 +32,7 @@ export function ExperienceList() {
               <div className="flex items-start space-x-4">
                 {/* Logo Column */}
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center">
+                  <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900/80">
                     <Image
                       src={experience.logo}
                       alt={`${experience.company} logo`}
@@ -46,7 +46,7 @@ export function ExperienceList() {
                 {/* Details Column */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-neutral-800 dark:text-neutral-200 text-sm leading-tight">
+                    <h3 className="text-sm leading-tight font-semibold text-neutral-200">
                       {experience.company}
                     </h3>
                     <button
@@ -62,15 +62,15 @@ export function ExperienceList() {
                     </button>
                   </div>
                   
-                  <p className="text-neutral-600 dark:text-neutral-400 text-xs mt-1">
+                  <p className="mt-1 text-xs text-neutral-400">
                     {experience.position}
                   </p>
                   
                   <div className="flex justify-between items-center mt-1">
-                    <p className="text-neutral-500 dark:text-neutral-500 text-xs">
+                    <p className="text-xs text-neutral-500">
                       {experience.duration}
                     </p>
-                    <p className="text-neutral-500 dark:text-neutral-500 text-xs">
+                    <p className="text-xs text-neutral-500">
                       {experience.location}
                     </p>
                   </div>
@@ -86,7 +86,7 @@ export function ExperienceList() {
               >
                 <ul className="space-y-1 pl-0 pr-1">
                   {experience.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="text-xs text-neutral-600 dark:text-neutral-300 flex items-start">
+                    <li key={bulletIndex} className="flex items-start text-xs text-neutral-300">
                       <span className="text-cyan-400 mr-1">•</span>
                       <span>{bullet.replace('• ', '')}</span>
                     </li>
