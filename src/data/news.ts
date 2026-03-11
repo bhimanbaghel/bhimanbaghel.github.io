@@ -3,7 +3,7 @@ import { NewsItem } from "@/components/ui/news-list";
 export const NEWS: NewsItem[] = [
   {
     date: "Oct 2025",
-    text: "Started as Applied Scientist II Intern @ Amazon, working on improving and making AI agent reasoning more efficient",
+    text: "🤖 Started as Applied Scientist II Intern @ Amazon, working on improving and making AI agent reasoning more efficient",
   },
   {
     date: "Aug 2025",
