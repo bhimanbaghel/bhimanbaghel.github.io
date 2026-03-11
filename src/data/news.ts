@@ -2,6 +2,19 @@ import { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {
+    date: "Mar 2026",
+    text: "🎓 Successfully passed the Ph.D. comprehensive exam, marking an important milestone in my doctoral journey",
+  },
+  {
+    date: "Jan 2026",
+    text: "🎉 Successfully finished internship and received a return internship offer for Summer 2026 @ Amazon",
+  },
+  {
+    date: "Nov 2025",
+    text: '🇨🇳 Attended EMNLP 2025 in China and presented "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing"',
+    link: "https://arxiv.org/abs/2503.11895",
+  },
+  {
     date: "Oct 2025",
     text: "🤖 Started as Applied Scientist II Intern @ Amazon, working on improving and making AI agent reasoning more efficient",
   },
