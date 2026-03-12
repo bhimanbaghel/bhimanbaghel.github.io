@@ -5,6 +5,15 @@ export interface HeroAction {
   external?: boolean;
 }
 
+export interface HeroSummarySegment {
+  text: string;
+  accent?: "cyan" | "lime";
+}
+
+export interface HeroSummaryParagraph {
+  segments: HeroSummarySegment[];
+}
+
 export interface RecentHighlightLink {
   label: string;
   href: string;
@@ -19,9 +28,33 @@ export const HERO_CONTENT = {
   advisor: "Prof. Xiang (Lorraine) Li",
   advisorUrl: "https://lorraine333.github.io/",
   summary: [
-    "I study interpretable and parameter-efficient reasoning in large language models, with current interests in model editing, LoRA, and reliability in high-stakes settings.",
-    "My recent work formalizes failure modes in model editing and develops methods that improve edit precision and generalization, with the broader goal of making foundation models more steerable and trustworthy.",
-  ],
+    {
+      segments: [
+        { text: "My research centers on " },
+        { text: "interpretable and efficient reasoning in AI", accent: "cyan" },
+        { text: ". I aim to make AI systems more " },
+        { text: "trustworthy", accent: "lime" },
+        {
+          text: " as they increasingly shape decisions in everyday life, while also helping ensure that advanced reasoning capabilities remain ",
+        },
+        { text: "broadly accessible", accent: "lime" },
+        { text: " rather than concentrated among only a few actors." },
+      ],
+    },
+    {
+      segments: [
+        { text: "My work spans a spectrum from " },
+        { text: "verbalized reasoning", accent: "cyan" },
+        { text: " to " },
+        { text: "mechanistically interpretable reasoning", accent: "cyan" },
+        { text: ". This includes making AI agents more capable and efficient through " },
+        { text: "inference-time rule distillation", accent: "lime" },
+        { text: ", as well as developing " },
+        { text: "model editing", accent: "lime" },
+        { text: " methods that improve how factual knowledge is updated inside large language models." },
+      ],
+    },
+  ] satisfies HeroSummaryParagraph[],
 };
 
 export const HERO_ACTIONS: HeroAction[] = [
@@ -53,14 +86,6 @@ export const HERO_ACTIONS: HeroAction[] = [
     kind: "linkedin",
     external: true,
   },
-];
-
-export const RESEARCH_FOCUS = [
-  "Model Editing",
-  "Parameter-Efficient Reasoning",
-  "LoRA / PEFT",
-  "Reliability",
-  "High-Stakes NLP",
 ];
 
 export const RECENT_HIGHLIGHT = {

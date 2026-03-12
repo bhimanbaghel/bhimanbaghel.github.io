@@ -16,8 +16,8 @@ import {
   HERO_ACTIONS,
   HERO_CONTENT,
   RECENT_HIGHLIGHT,
-  RESEARCH_FOCUS,
   type HeroAction,
+  type HeroSummarySegment,
 } from "@/data/homepage-content";
 import { PublicationList } from "@/components/ui/publication-list";
 import { NewsList } from "@/components/ui/news-list";
@@ -176,6 +176,19 @@ function HighlightLinkIcon({ label }: { label: string }) {
   return <IconArrowUpRight className="h-3.5 w-3.5" />;
 }
 
+function SummarySegment({ segment }: { segment: HeroSummarySegment }) {
+  if (!segment.accent) {
+    return <span>{segment.text}</span>;
+  }
+
+  const accentClass =
+    segment.accent === "cyan"
+      ? "font-medium text-cyan-100"
+      : "font-medium text-lime-100";
+
+  return <span className={accentClass}>{segment.text}</span>;
+}
+
 function ResearchHighlightCard() {
   return (
     <SectionShell
@@ -298,24 +311,15 @@ export function EditorialHomepage() {
 
               <div className="max-w-3xl space-y-4 text-base leading-relaxed text-[#aab8cb] sm:text-[1.05rem]">
                 {HERO_CONTENT.summary.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph.segments.map((segment) => segment.text).join("")}>
+                    {paragraph.segments.map((segment) => (
+                      <SummarySegment
+                        key={`${segment.text}-${segment.accent ?? "plain"}`}
+                        segment={segment}
+                      />
+                    ))}
+                  </p>
                 ))}
-              </div>
-
-              <div className="space-y-3">
-                <p className="text-[0.68rem] uppercase tracking-[0.26em] text-[#7888a0]">
-                  Research Focus
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  {RESEARCH_FOCUS.map((focus) => (
-                    <span
-                      key={focus}
-                      className="rounded-full border border-lime-300/20 bg-lime-300/10 px-4 py-2 text-sm font-medium text-lime-100"
-                    >
-                      {focus}
-                    </span>
-                  ))}
-                </div>
               </div>
 
               <div className="flex flex-wrap gap-3">
