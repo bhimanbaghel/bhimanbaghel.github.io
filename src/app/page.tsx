@@ -1,8 +1,5 @@
-//pages.tsx
-import { BackgroundBeamsDemo } from "./background";
+import { EditorialHomepage } from "@/components/home/editorial-homepage";
 
 export default function Home() {
-  return (
-      <BackgroundBeamsDemo />
-  );
+  return <EditorialHomepage />;
 }

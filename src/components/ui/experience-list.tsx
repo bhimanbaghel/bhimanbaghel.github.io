@@ -2,101 +2,89 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { experienceData } from "@/data/experience";
-import { cn } from "@/lib/utils";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
+import { experienceData } from "@/data/experience";
 
 export function ExperienceList() {
-  const [expandedDescriptions, setExpandedDescriptions] = useState<{ [key: number]: boolean }>({});
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<number, boolean>>(
+    { 0: true, 1: true },
+  );
 
   const toggleDescription = (index: number) => {
-    setExpandedDescriptions((prev) => ({
-      ...prev,
-      [index]: !prev[index]
+    setExpandedDescriptions((current) => ({
+      ...current,
+      [index]: !current[index],
     }));
   };
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      <div
-        role="region"
-        aria-label="Professional Experience List"
-        className="mt-0 pt-0 overflow-y-auto flex-1 pr-0 max-h-[17rem] custom-scroll"
-      >
-        <div className="space-y-2">
-          {experienceData.map((experience, index) => (
-            <div 
-              key={experience.id} 
-              className="p-2 rounded-lg bg-black/10 hover:bg-neutral-800/50 transition-colors border border-neutral-800/30"
-            >
-              <div className="flex items-start space-x-4">
-                {/* Logo Column */}
-                <div className="flex-shrink-0">
-                  <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900/80">
-                    <Image
-                      src={experience.logo}
-                      alt={`${experience.company} logo`}
-                      width={50}
-                      height={50}
-                      className="w-full h-full object-contain"
-                    />
+    <div role="region" aria-label="Research and Industry Experience" className="space-y-4">
+      {experienceData.map((experience, index) => (
+        <article
+          key={experience.id}
+          className="rounded-[24px] border border-white/8 bg-[#111822]/80 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.24)]"
+        >
+          <div className="flex items-start gap-4">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/8 bg-[#0c1218]">
+              <Image
+                src={experience.logo}
+                alt={`${experience.company} logo`}
+                width={50}
+                height={50}
+                className="h-full w-full object-contain"
+              />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-base font-semibold text-[#f2f6fb]">
+                    {experience.company}
+                  </h3>
+                  <p className="mt-1 text-sm text-[#b9c6d8]">{experience.position}</p>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs uppercase tracking-[0.18em] text-[#728198]">
+                    <span>{experience.duration}</span>
+                    <span>{experience.location}</span>
                   </div>
                 </div>
-                
-                {/* Details Column */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-sm leading-tight font-semibold text-neutral-200">
-                      {experience.company}
-                    </h3>
-                    <button
-                      onClick={() => toggleDescription(index)}
-                      className="flex items-center text-neutral-400 hover:text-neutral-200 transition-colors"
-                      aria-label={expandedDescriptions[index] ? "Hide description" : "Show description"}
-                    >
-                      {expandedDescriptions[index] ? (
-                        <IconChevronUp className="w-4 h-4" />
-                      ) : (
-                        <IconChevronDown className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
-                  
-                  <p className="mt-1 text-xs text-neutral-400">
-                    {experience.position}
-                  </p>
-                  
-                  <div className="flex justify-between items-center mt-1">
-                    <p className="text-xs text-neutral-500">
-                      {experience.duration}
-                    </p>
-                    <p className="text-xs text-neutral-500">
-                      {experience.location}
-                    </p>
-                  </div>
-                </div>
+                <button
+                  onClick={() => toggleDescription(index)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[#9ba9bc] transition-colors hover:border-white/20 hover:text-[#eef4fb]"
+                  aria-label={
+                    expandedDescriptions[index] ? "Hide description" : "Show description"
+                  }
+                >
+                  {expandedDescriptions[index] ? (
+                    <IconChevronUp className="h-4 w-4" />
+                  ) : (
+                    <IconChevronDown className="h-4 w-4" />
+                  )}
+                </button>
               </div>
 
-              {/* Description - Expandable - Now below the entire header section */}
               <div
                 className={cn(
                   "overflow-hidden transition-all duration-300 ease-in-out",
-                  expandedDescriptions[index] ? "max-h-[200px] mt-3" : "max-h-0"
+                  expandedDescriptions[index] ? "max-h-[260px] pt-4" : "max-h-0",
                 )}
               >
-                <ul className="space-y-1 pl-0 pr-1">
+                <ul className="space-y-2 border-t border-white/8 pt-4">
                   {experience.description.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start text-xs text-neutral-300">
-                      <span className="text-cyan-400 mr-1">•</span>
-                      <span>{bullet.replace('• ', '')}</span>
+                    <li
+                      key={bulletIndex}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-[#c9d3e1]"
+                    >
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                      <span>{bullet.replace("• ", "")}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </article>
+      ))}
     </div>
   );
-} 
+}

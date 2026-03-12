@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bhiman's Website",
-  description: "Developed by Bhiman",
+  title: "Bhiman Kumar Baghel | AI Researcher and PhD Student",
+  description:
+    "Bhiman Kumar Baghel is a PhD student in Computer Science at the University of Pittsburgh working on model editing, parameter-efficient reasoning, and reliable language models.",
 };
 
 export default function RootLayout({
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-transparent antialiased`}
       >
         <Tooltip.Provider delayDuration={100} skipDelayDuration={200}>
           {children}

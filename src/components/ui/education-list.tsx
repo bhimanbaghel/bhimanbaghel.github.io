@@ -6,56 +6,48 @@ import { educationData } from "@/data/education";
 
 export function EducationList() {
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      <div
-        role="region"
-        aria-label="Education List"
-        className="mt-0 pt-0 overflow-y-auto flex-1 pr-0 max-h-[17rem] custom-scroll"
-      >
-        <div className="space-y-2">
-          {educationData.map((education) => (
-            <div 
-              key={education.id} 
-              className="flex items-start space-x-4 rounded-lg border border-neutral-800/30 bg-black/10 p-2 transition-colors hover:bg-neutral-800/50"
+    <div role="region" aria-label="Education" className="space-y-3">
+      {educationData.map((education) => (
+        <article
+          key={education.id}
+          className="rounded-[22px] border border-white/8 bg-[#111822]/80 p-4"
+        >
+          <div className="flex items-start gap-4">
+            <div
+              className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/8 ${education.id === 2 ? "bg-white p-1" : "bg-[#0c1218]"}`}
             >
-              {/* Logo Column */}
-              <div className="flex-shrink-0">
-                <div
-                  className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg border border-neutral-800 ${education.id === 2 ? "bg-white p-1" : "bg-neutral-900/80"}`}
-                >
-                  <Image
-                    src={education.logo}
-                    alt={`${education.university} logo`}
-                    width={50}
-                    height={50}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-              
-              {/* Details Column */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm leading-tight font-semibold text-neutral-200">
-                  {education.university}
-                </h3>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-xs text-neutral-400">
-                    {education.degree}
-                  </p>
-                  {education.gpa && (
-                    <p className="text-xs font-medium text-neutral-400">
-                      GPA: {education.gpa}
-                    </p>
-                  )}
-                </div>
-                <p className="mt-1 text-xs text-neutral-500">
-                  {education.year}
-                </p>
-              </div>
+              <Image
+                src={education.logo}
+                alt={`${education.university} logo`}
+                width={50}
+                height={50}
+                className="h-full w-full object-contain"
+              />
             </div>
-          ))}
-        </div>
-      </div>
+
+            <div className="min-w-0 flex-1">
+              <h3 className="text-sm font-semibold leading-relaxed text-[#f2f6fb]">
+                {education.university}
+              </h3>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.18em] text-[#728198]">
+                <span>{education.degree}</span>
+                {education.gpa && <span>GPA {education.gpa}</span>}
+              </div>
+              <p className="mt-2 text-sm text-[#a9b6ca]">{education.year}</p>
+              {education.advisor && (
+                <p className="mt-3 text-sm leading-relaxed text-[#cbd5e3]">
+                  Advisor: {education.advisor}
+                </p>
+              )}
+              {education.thesis && (
+                <p className="mt-3 text-sm leading-relaxed text-[#cbd5e3]">
+                  Thesis: {education.thesis}
+                </p>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   );
-} 
+}

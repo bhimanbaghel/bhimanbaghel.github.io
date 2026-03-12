@@ -1,268 +1,225 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
+  IconArrowUpRight,
   IconBrandYoutube,
   IconSparkles,
-  IconBulb,
 } from "@tabler/icons-react";
-import { PUBLICATIONS } from "@/data/publications";
-import { motion, AnimatePresence } from "framer-motion";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { cn } from "@/lib/utils";
+import {
+  PUBLICATIONS,
+  type Publication,
+  type PublicationCategory,
+} from "@/data/publications";
 
-export type Category = "All" | "Model Editing" | "Fairness" | "Conversational AI" | "Patents";
+export type Category = "All" | PublicationCategory;
 
-export interface Publication {
-  title: string;
-  link: string;
-  authors: string;
-  venue: string;
-  format: string;
-  category: Category;
-  abstract?: string;
-  isNew?: boolean;
-  talkLink?: string;
-  workshop?: string;
-  applicationNo?: string;
+const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "EMNLP", "IEEE"];
+const categories: Category[] = [
+  "All",
+  "Model Editing",
+  "Fairness",
+  "Conversational AI",
+];
+
+function renderAuthors(authors: string) {
+  return authors.split(", ").map((author, index, arr) => (
+    <React.Fragment key={`${author}-${index}`}>
+      {author.includes("Bhiman Kumar Baghel") ? (
+        <strong className="font-medium text-[#f4f7fb]">{author}</strong>
+      ) : (
+        <span>{author}</span>
+      )}
+      {index < arr.length - 1 && ", "}
+    </React.Fragment>
+  ));
 }
 
-const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "USPTO", "EMNLP"];
+function PublicationCard({
+  publication,
+  expanded,
+  onToggle,
+}: {
+  publication: Publication;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const venueIsPrestigious = prestigiousVenues.some((venue) =>
+    publication.venue.includes(venue),
+  );
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.24 }}
+      className="rounded-[26px] border border-white/8 bg-[#111822]/82 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={cn(
+                  "rounded-full border px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em]",
+                  venueIsPrestigious
+                    ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
+                    : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
+                )}
+              >
+                {publication.venue}
+              </span>
+              <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
+                {publication.category}
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-[#9cabc1]">
+                {publication.format}
+              </span>
+              {publication.isNew && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
+                  <IconSparkles className="h-3.5 w-3.5" />
+                  New
+                </span>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <a
+                href={publication.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-start gap-2 text-lg font-semibold leading-tight text-[#f5f8fb] transition-colors hover:text-cyan-200"
+              >
+                <span>{publication.title}</span>
+                <IconArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+              <p className="text-sm leading-relaxed text-[#9eacc0]">
+                {renderAuthors(publication.authors)}
+              </p>
+              {publication.workshop && (
+                <p className="text-xs uppercase tracking-[0.24em] text-[#73839a]">
+                  {publication.workshop}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <a
+              href={publication.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-[#edf3fb] transition-colors hover:border-cyan-300/30 hover:bg-cyan-300/10 hover:text-cyan-100"
+            >
+              Paper
+              <IconArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            {publication.talkLink && (
+              <a
+                href={publication.talkLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-[#edf3fb] transition-colors hover:border-red-400/30 hover:bg-red-400/10 hover:text-red-100"
+              >
+                Talk
+                <IconBrandYoutube className="h-3.5 w-3.5" />
+              </a>
+            )}
+          </div>
+        </div>
+
+        {publication.abstract && (
+          <div className="rounded-[20px] border border-white/7 bg-[#0c1219]/80 px-4 py-3">
+            <p
+              className={cn(
+                "text-sm leading-relaxed text-[#b4c1d4]",
+                !expanded && "line-clamp-3",
+              )}
+            >
+              {publication.abstract}
+            </p>
+            <button
+              onClick={onToggle}
+              className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 transition-colors hover:text-cyan-100"
+            >
+              {expanded ? "Hide abstract" : "Show abstract"}
+            </button>
+          </div>
+        )}
+      </div>
+    </motion.article>
+  );
+}
 
 export const PublicationList = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
-  const [expandedAbstracts, setExpandedAbstracts] = useState<{ [key: number]: boolean }>({});
+  const [expandedAbstracts, setExpandedAbstracts] = useState<Record<number, boolean>>(
+    {},
+  );
 
-  const toggleAbstract = (index: number) => {
-    const isCurrentlyExpanded = expandedAbstracts[index];
-  
-    if (isCurrentlyExpanded) {
-      // First collapse visually, then after transition, flip label
-      setExpandedAbstracts((prev) => ({ ...prev, [index]: false }));
-      // No need to unset it — false is enough
-    } else {
-      // Expand immediately
-      setExpandedAbstracts((prev) => ({ ...prev, [index]: true }));
-    }
-  };
-
-  const filtered = activeCategory === "All"
-    ? PUBLICATIONS
-    : PUBLICATIONS.filter((p) => p.category === activeCategory);
-
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-    const handleCategoryChange = (cat: Category) => {
-      setActiveCategory(cat);
-      // Scroll to top when filter changes
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
+  const filtered =
+    activeCategory === "All"
+      ? PUBLICATIONS
+      : PUBLICATIONS.filter((publication) => publication.category === activeCategory);
 
   return (
-    <Tooltip.Provider delayDuration={100}>
-    <div className="flex flex-col h-full overflow-hidden">
-      {/* Filters */}
-      <div className="mt-1 flex flex-wrap items-center gap-2 shrink-0">
-        <span className="text-sm text-neutral-400">Research:</span>
-        {(["All", "Model Editing", "Fairness", "Conversational AI", "Patents"] as Category[]).map((cat) => {
-          const count = cat === "All"
-          ? PUBLICATIONS.length
-          : PUBLICATIONS.filter((p) => p.category === cat).length;
-      
-        return (
-          <button
-            key={cat}
-            onClick={() => handleCategoryChange(cat)}
-            className={cn(
-                "text-sm px-3 py-1 rounded-full border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
-                activeCategory === cat
-                  ? "bg-white text-black"
-                  : "border-neutral-700 text-neutral-400 hover:border-neutral-500 hover:text-white"
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="mr-2 text-[0.72rem] uppercase tracking-[0.24em] text-[#728097]">
+          Browse by topic
+        </span>
+        {categories.map((category) => {
+          const count =
+            category === "All"
+              ? PUBLICATIONS.length
+              : PUBLICATIONS.filter((publication) => publication.category === category)
+                  .length;
+
+          return (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={cn(
+                "rounded-full border px-3 py-2 text-xs font-medium tracking-[0.16em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50",
+                activeCategory === category
+                  ? "border-cyan-300/35 bg-cyan-300/12 text-cyan-100"
+                  : "border-white/10 bg-white/[0.03] text-[#9aa8bc] hover:border-white/20 hover:text-[#edf3fb]",
               )}
-          >
-            {cat} {activeCategory === cat && (<span className="ml-1 text-xs text-neutral-500">({count})</span>)}
-          </button>
-        );
+            >
+              {category}
+              <span className="ml-2 text-[0.68rem] text-[#73839a]">({count})</span>
+            </button>
+          );
         })}
       </div>
 
-      {/* Publications */}
-      <div ref={scrollContainerRef} role="region" aria-label="Publications List" className="mt-2 pt-1 overflow-y-auto overflow-x-visible flex-1 pr-1 max-h-[15rem] custom-scroll">
       <AnimatePresence mode="wait">
-      {filtered.length > 0 && (
-      <motion.div
-      key={activeCategory}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        variants={{
-            hidden: {},
-            show: {
-            transition: {
-                staggerChildren: 0.07, // 70ms delay between each child
-            },
-            },
-        }}
-        className="flex flex-col"
-        >
-      
-        {filtered.map((pub, i) => (
-          <motion.div 
-          key={pub.title + i}
-          initial={{ opacity: 0, y: 10 }}
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          whileHover={{ y: -2, scale: 1.001 }}
-          transition={{ duration: 0.3 }}
-          className="mb-2 p-3 pb-2 pt-1 rounded-md bg-black/10 hover:bg-neutral-800/50 transition-colors border border-neutral-800">
-            <div className="flex items-center gap-2">
-              {/* Icon for patents */}
-              {pub.format === "Patent" && (
-                <Tooltip.Root delayDuration={100}>
-                  <Tooltip.Trigger asChild>
-                    <div className="flex">
-                      <IconBulb className="w-4 h-4 text-yellow-400" />
-                    </div>
-                  </Tooltip.Trigger>
-                  <Tooltip.Portal>
-                    <Tooltip.Content
-                      side="top"
-                      sideOffset={5}
-                      className="rounded-md bg-white/10 backdrop-blur-md px-2 py-1 text-xs text-white shadow-md animate-fade-in z-[100]"
-                    >
-                      Patent
-                      <Tooltip.Arrow className="fill-white/10" />
-                    </Tooltip.Content>
-                  </Tooltip.Portal>
-                </Tooltip.Root>
-              )}
-              <a
-                href={pub.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white font-medium hover:underline"
-              >
-                {pub.title}
-              </a>
-              {/* New badge */}
-                {pub.isNew && (
-                  <Tooltip.Root delayDuration={100}>
-                    <Tooltip.Trigger asChild>
-                      <div className="flex">
-                        <IconSparkles className="w-4 h-4 text-green-400" />
-                      </div>
-                    </Tooltip.Trigger>
-                    <Tooltip.Portal>
-                      <Tooltip.Content
-                        side="top"
-                        sideOffset={5}
-                        className="rounded-md bg-white/10 backdrop-blur-md px-2 py-1 text-xs text-white shadow-md animate-fade-in z-[100]"
-                      >
-                        New
-                        <Tooltip.Arrow className="fill-white/10" />
-                      </Tooltip.Content>
-                    </Tooltip.Portal>
-                  </Tooltip.Root>
-                )}
-
-                {/* Talk link */}
-                {pub.talkLink && (
-                <Tooltip.Root delayDuration={100}>
-                  <Tooltip.Trigger asChild>
-                    <a
-                      href={pub.talkLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-red-500 hover:text-red-400 flex"
-                    >
-                      <IconBrandYoutube className="w-4 h-4" />
-                    </a>
-                  </Tooltip.Trigger>
-                  <Tooltip.Portal>
-                    <Tooltip.Content
-                      side="top"
-                      sideOffset={5}
-                      className="rounded-md bg-white/10 backdrop-blur-md px-2 py-1 text-xs text-white shadow-md animate-fade-in z-[100]"
-                    >
-                      Watch Talk
-                      <Tooltip.Arrow className="fill-white/10" />
-                    </Tooltip.Content>
-                  </Tooltip.Portal>
-                </Tooltip.Root>
-              )}
-            </div>
-
-            {/* Authors */}
-            <div className="text-sm text-neutral-400">
-                {pub.authors.split(", ").map((author, j, arr) => (
-                <React.Fragment key={j}>
-                    {author.includes("Bhiman Kumar Baghel") ? (
-                    <strong className="text-neutral-100">{author}</strong>
-                    ) : (
-                    <span>{author}</span>
-                    )}
-                    {/* Add comma and space after every author except the last */}
-                    {j < arr.length - 1 && ", "}
-                </React.Fragment>
-                ))}
-            </div>
-
-            {/* Venue */}
-            <div className="text-xs text-neutral-400">
-                {pub.workshop && (
-                    <>
-                    <span>{pub.workshop}</span>
-                    {", "}
-                    </>
-                )}
-                <span
-                    className={cn(
-                    "text-neutral-500",
-                    prestigiousVenues.some((v) => pub.venue.includes(v)) && "text-white font-semibold"
-                    )}
-                >
-                    {pub.venue}
-                </span>
-                {" "}•{" "}
-                <span className="text-neutral-400">{pub.format}</span>
-                {/* If it's a patent, show application number */}
-                {pub.format === "Patent" && pub.applicationNo && (
-                  <>
-                    {" "}•{" "}
-                    <span className="text-neutral-400">App No: {pub.applicationNo}</span>
-                  </>
-                )}
-            </div>
-
-            {/* Abstract */}
-            {pub.abstract && (
-              <div className="mt-1 text-xs text-neutral-400">
-                <div
-                  className={cn(
-                    "overflow-hidden transition-all duration-300 ease-in-out",
-                    expandedAbstracts[i] ? "max-h-[200px]" : "max-h-0"
-                  )}
-                >
-                  <p className="mt-1">{pub.abstract}</p>
-                </div>
-                <button
-                  onClick={() => toggleAbstract(i)}
-                  className="text-inline text-neutral-300 hover:text-white hover:underline underline-offset-2 transition-colors duration-300 hover:underline text-xs mt-1 inline-block"
-                >
-                  {expandedAbstracts[i] ? "Hide abstract" : "Show abstract"}
-                </button>
-              </div>
-            )}
-          </motion.div>
-        ))}
-        
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.2 }}
+          className="space-y-4"
+        >
+          {filtered.map((publication, index) => (
+            <PublicationCard
+              key={`${publication.title}-${index}`}
+              publication={publication}
+              expanded={Boolean(expandedAbstracts[index])}
+              onToggle={() =>
+                setExpandedAbstracts((current) => ({
+                  ...current,
+                  [index]: !current[index],
+                }))
+              }
+            />
+          ))}
         </motion.div>
-        )}
-        </AnimatePresence>
-      </div>
+      </AnimatePresence>
     </div>
-    </Tooltip.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import { NewsItem } from "@/components/ui/news-list";
+import type { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {

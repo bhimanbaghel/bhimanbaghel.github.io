@@ -1,6 +1,6 @@
-# Bhiman Kumar Baghel - Personal Portfolio Website
+# Bhiman Kumar Baghel - AI Research Homepage
 
-A modern, interactive personal portfolio website showcasing my research, publications, and projects as a PhD student in Computer Science at the University of Pittsburgh.
+A modern, research-first homepage showcasing my publications, research highlights, and academic work as a PhD student in Computer Science at the University of Pittsburgh.
 
 ## 🌟 Features
 
@@ -39,8 +39,8 @@ A modern, interactive personal portfolio website showcasing my research, publica
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/personal-website.git
-cd personal-website
+git clone https://github.com/your-username/research-homepage.git
+cd research-homepage
 ```
 
 2. Install dependencies:
@@ -65,7 +65,7 @@ pnpm dev
 bun dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the website.
+4. Open [http://localhost:3000](http://localhost:3000) to view the homepage.
 
 ### Build for Production
 
