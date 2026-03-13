@@ -37,7 +37,7 @@ export const NewsList = () => {
             transition={{ duration: 0.22, delay: index * 0.03 }}
             className="relative"
           >
-            <div className="absolute left-[-1.9rem] top-0 h-[1.125rem] w-[1.125rem] rounded-full border border-cyan-200/40 bg-cyan-300/80 ring-4 ring-cyan-300/12" />
+            <div className="absolute left-[-1.95rem] top-0 h-[1.125rem] w-[1.125rem] rounded-full border border-cyan-200/40 bg-cyan-300/80 ring-4 ring-cyan-300/12" />
             <div className="space-y-2">
               <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[#76859c]">
                 {item.date}
