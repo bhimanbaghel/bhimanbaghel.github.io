@@ -80,7 +80,7 @@ function PublicationCard({
         )}
       >
         {hasImage ? (
-          <div className="order-last overflow-hidden rounded-[22px] border border-white/8 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.22)] lg:order-none lg:flex lg:h-full lg:min-h-[16rem] lg:items-center lg:justify-center lg:p-3">
+          <div className="order-last overflow-hidden rounded-[22px] border border-white/8 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.22)] lg:order-none lg:flex lg:h-full lg:min-h-[12rem] lg:items-center lg:justify-center lg:p-3">
             <Image
               src={publication.image!}
               alt={publication.imageAlt ?? `${publication.title} figure`}

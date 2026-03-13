@@ -100,7 +100,7 @@ export const RECENT_HIGHLIGHT = {
   ],
   contribution:
     "Large language models can be updated more efficiently through model editing, but existing methods often miss the target fact or damage nearby knowledge. This work introduces iterative and neighbor-assisted model editing to improve edit precision up to 38 percentage points and generalization up to 6, across models, algorithms, and benchmarks.",
-  image: "/publication/resolveunderoveredit.png",
+  image: "/highlight/highlightimage.png",
   links: [
     {
       label: "GitHub",
