@@ -23,6 +23,7 @@ const categories: Category[] = [
   "Mechanistic Interpretability",
   "AI Fairness",
   "Conversational AI",
+  "AI Creativity",
 ];
 
 function getPublicationYear(publication: Publication) {
