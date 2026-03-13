@@ -20,8 +20,8 @@ export type Category = "All" | PublicationCategory;
 const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "EMNLP", "IEEE"];
 const categories: Category[] = [
   "All",
-  "Model Editing",
-  "Fairness",
+  "Mechanistic Interpretability",
+  "AI Fairness",
   "Conversational AI",
 ];
 

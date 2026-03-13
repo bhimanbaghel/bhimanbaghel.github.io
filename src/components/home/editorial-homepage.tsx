@@ -439,7 +439,7 @@ export function EditorialHomepage() {
             <SectionShell
               eyebrow="Primary Research Record"
               title="Publications"
-              description="Peer-reviewed work and archival publications spanning model editing, fairness, and conversational AI."
+              description="Peer-reviewed work and archival publications spanning mechanistic interpretability, AI fairness, and conversational AI."
               className="p-5 sm:p-7"
             >
               <PublicationList />

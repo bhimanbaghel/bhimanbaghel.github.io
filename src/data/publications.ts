@@ -1,6 +1,6 @@
 export type PublicationCategory =
-  | "Model Editing"
-  | "Fairness"
+  | "Mechanistic Interpretability"
+  | "AI Fairness"
   | "Conversational AI";
 
 export interface Publication {
@@ -27,7 +27,7 @@ export const PUBLICATIONS: Publication[] = [
       "Bhiman Kumar Baghel, Emma Jordan, Zheyuan Ryan Shi, Xiang Lorraine Li",
     venue: "EMNLP 2025",
     format: "Findings",
-    category: "Model Editing",
+    category: "Mechanistic Interpretability",
     abstract:
       "We propose techniques to systematically resolve UnderEdit and OverEdit issues in model editing, improving both precision and generalization.",
     image: "/publication/resolveunderoveredit.png",
@@ -43,7 +43,7 @@ export const PUBLICATIONS: Publication[] = [
     venue: "ACL 2024",
     workshop: "GeBNLP Workshop",
     format: "Workshop",
-    category: "Fairness",
+    category: "AI Fairness",
     abstract:
       "We investigate biases in human vs AI-generated student summaries, proposing fairness metrics and improving reflection generation systems.",
     talkLink: "https://www.youtube.com/watch?v=Mu7M7cn-MbA",
@@ -55,7 +55,7 @@ export const PUBLICATIONS: Publication[] = [
     venue: "CVPR 2024",
     workshop: "MULA Workshop",
     format: "Workshop",
-    category: "Fairness",
+    category: "AI Fairness",
     abstract:
       "We propose methods for fair interpretation of memes by jointly modeling image and text, focusing on bias mitigation across sensitive attributes.",
     talkLink: "https://www.youtube.com/watch?v=QneZ9v0THrI",
