@@ -18,10 +18,10 @@ export const NewsList = () => {
       ref={scrollRef}
       role="region"
       aria-label="News"
-      className="max-h-[26rem] overflow-y-auto pr-2 custom-scroll"
+      className="max-h-[26rem] overflow-y-auto pt-3 pr-2 custom-scroll"
     >
-      <div className="relative flex flex-col gap-4 pl-5">
-        <div className="absolute bottom-0 left-1.5 top-0 w-px bg-gradient-to-b from-cyan-300/20 via-white/12 to-transparent" />
+      <div className="relative flex flex-col gap-4 pl-9">
+        <div className="absolute bottom-0 left-3 top-0 w-1 bg-gradient-to-b from-cyan-300/20 via-white/12 to-transparent" />
 
         {NEWS.map((item, index) => (
           <motion.div
@@ -31,7 +31,7 @@ export const NewsList = () => {
             transition={{ duration: 0.22, delay: index * 0.03 }}
             className="relative"
           >
-            <div className="absolute left-[-1rem] top-1.5 h-2.5 w-2.5 rounded-full border border-cyan-200/40 bg-cyan-300/80 shadow-[0_0_18px_rgba(121,218,255,0.4)]" />
+            <div className="absolute left-[-1.9rem] top-0 h-[1.125rem] w-[1.125rem] rounded-full border border-cyan-200/40 bg-cyan-300/80 ring-4 ring-cyan-300/12" />
             <div className="space-y-1">
               <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[#76859c]">
                 {item.date}
