@@ -25,9 +25,26 @@ import { ExperienceList } from "@/components/ui/experience-list";
 import { EducationList } from "@/components/ui/education-list";
 import { HonorsList } from "@/components/ui/honors-list";
 import { IndustryInnovationList } from "@/components/ui/industry-innovation-list";
+import { FloatingSectionNav } from "@/components/ui/floating-section-nav";
 
 const panelClass =
   "relative overflow-hidden rounded-[30px] border border-white/8 bg-white/[0.035] shadow-[0_30px_120px_rgba(0,0,0,0.35)] backdrop-blur-xl";
+const SECTION_NAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "news", label: "News" },
+  { id: "publications", label: "Publications" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "patents", label: "Patents" },
+  { id: "honors", label: "Honors" },
+] as const;
+const DESKTOP_SECTION_NAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "news", label: "News" },
+  { id: "publications", label: "Publications" },
+  { id: "experience-education", label: "Experience / Education" },
+  { id: "patents-honors", label: "Patents / Honors" },
+] as const;
 
 function ActionIcon({ kind }: { kind: HeroAction["kind"] }) {
   switch (kind) {
@@ -47,12 +64,14 @@ function ActionIcon({ kind }: { kind: HeroAction["kind"] }) {
 }
 
 function SectionShell({
+  id,
   eyebrow,
   title,
   description,
   children,
   className,
 }: {
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -60,7 +79,14 @@ function SectionShell({
   className?: string;
 }) {
   return (
-    <section className={cn(panelClass, "flex h-full flex-col p-5 sm:p-6", className)}>
+    <section
+      id={id}
+      className={cn(
+        panelClass,
+        "scroll-mt-6 flex h-full flex-col p-5 sm:scroll-mt-8 sm:p-6",
+        className,
+      )}
+    >
       <div className="mb-5 space-y-3">
         {eyebrow && (
           <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[#7b8aa0]">
@@ -308,12 +334,13 @@ export function EditorialHomepage() {
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:120px_120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1560px] px-4 py-6 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
+      <div className="relative mx-auto max-w-[1560px] px-4 pb-24 pt-6 sm:px-6 sm:pb-28 sm:pt-10 lg:px-10 lg:pb-32 lg:pt-12">
         <motion.section
+          id="about"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="grid items-stretch gap-6 xl:grid-cols-[minmax(0,1.58fr)_minmax(360px,0.98fr)]"
+          className="grid scroll-mt-6 items-stretch gap-6 sm:scroll-mt-8 xl:grid-cols-[minmax(0,1.58fr)_minmax(360px,0.98fr)]"
         >
           <div className={cn(panelClass, "h-full p-6 sm:p-8 lg:p-10")}>
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
@@ -423,6 +450,7 @@ export function EditorialHomepage() {
             transition={{ duration: 0.32, delay: 0.16 }}
           >
             <SectionShell
+              id="news"
               eyebrow="Live Timeline"
               title="News"
               description="Conference presentations, milestones, and recent updates."
@@ -437,6 +465,7 @@ export function EditorialHomepage() {
             transition={{ duration: 0.32, delay: 0.2 }}
           >
             <SectionShell
+              id="publications"
               eyebrow="Primary Research Record"
               title="Publications"
               description="Peer-reviewed work and archival publications spanning mechanistic interpretability, AI fairness, conversational AI, and AI creativity."
@@ -446,7 +475,10 @@ export function EditorialHomepage() {
             </SectionShell>
           </motion.div>
 
-          <div className="grid items-stretch gap-6 xl:grid-cols-2">
+          <div
+            id="experience-education"
+            className="grid scroll-mt-6 items-stretch gap-6 sm:scroll-mt-8 xl:grid-cols-2"
+          >
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -454,6 +486,7 @@ export function EditorialHomepage() {
               className="h-full"
             >
               <SectionShell
+                id="experience"
                 eyebrow="Research and Industry"
                 title="Experience"
                 description="Recent work across academia and industry, with emphasis on research contributions, systems impact, and model behavior."
@@ -469,6 +502,7 @@ export function EditorialHomepage() {
               className="h-full"
             >
               <SectionShell
+                id="education"
                 eyebrow="Academic Background"
                 title="Education"
                 description="Training, degrees, and academic mentorship across institutions."
@@ -478,13 +512,17 @@ export function EditorialHomepage() {
             </motion.div>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-2">
+          <div
+            id="patents-honors"
+            className="grid scroll-mt-6 gap-6 sm:scroll-mt-8 xl:grid-cols-2"
+          >
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.32, delay: 0.32 }}
             >
               <SectionShell
+                id="patents"
                 eyebrow="Applied AI"
                 title="Patents"
                 description="Patent work and production-facing research connected to conversational AI, IoT, and personalization."
@@ -499,6 +537,7 @@ export function EditorialHomepage() {
               transition={{ duration: 0.32, delay: 0.36 }}
             >
               <SectionShell
+                id="honors"
                 eyebrow="Recognition"
                 title="Honors"
                 description="Selected awards and recognitions across research and industry."
@@ -509,6 +548,11 @@ export function EditorialHomepage() {
           </div>
         </div>
       </div>
+      <FloatingSectionNav
+        items={[...SECTION_NAV_ITEMS]}
+        desktopItems={[...DESKTOP_SECTION_NAV_ITEMS]}
+        heroId="about"
+      />
     </main>
   );
 }
