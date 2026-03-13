@@ -189,6 +189,54 @@ function SummarySegment({ segment }: { segment: HeroSummarySegment }) {
   return <span className={accentClass}>{segment.text}</span>;
 }
 
+function SummaryText({ segments }: { segments: HeroSummarySegment[] }) {
+  return (
+    <>
+      {segments.map((segment) => (
+        <SummarySegment
+          key={`${segment.text}-${segment.accent ?? "plain"}`}
+          segment={segment}
+        />
+      ))}
+    </>
+  );
+}
+
+function splitSegmentsAtFirstSentence(segments: HeroSummarySegment[]) {
+  const intro: HeroSummarySegment[] = [];
+  const rest: HeroSummarySegment[] = [];
+  let sentenceEnded = false;
+
+  for (const segment of segments) {
+    if (sentenceEnded) {
+      rest.push(segment);
+      continue;
+    }
+
+    const periodIndex = segment.text.indexOf(".");
+
+    if (periodIndex === -1) {
+      intro.push(segment);
+      continue;
+    }
+
+    const introText = segment.text.slice(0, periodIndex + 1);
+    const restText = segment.text.slice(periodIndex + 1);
+
+    if (introText) {
+      intro.push({ ...segment, text: introText });
+    }
+
+    if (restText) {
+      rest.push({ ...segment, text: restText });
+    }
+
+    sentenceEnded = true;
+  }
+
+  return { intro, rest };
+}
+
 function ResearchHighlightCard() {
   return (
     <SectionShell
@@ -304,22 +352,49 @@ export function EditorialHomepage() {
                     </div>
                   </div>
                 </div>
-                <div className="shrink-0 sm:pt-2">
+                <div className="hidden shrink-0 sm:block sm:pt-2">
                   <MiniPortrait />
                 </div>
               </div>
 
               <div className="max-w-3xl space-y-4 text-base leading-relaxed text-[#aab8cb] sm:text-[1.05rem]">
-                {HERO_CONTENT.summary.map((paragraph) => (
-                  <p key={paragraph.segments.map((segment) => segment.text).join("")}>
-                    {paragraph.segments.map((segment) => (
-                      <SummarySegment
-                        key={`${segment.text}-${segment.accent ?? "plain"}`}
-                        segment={segment}
-                      />
-                    ))}
-                  </p>
-                ))}
+                {HERO_CONTENT.summary.map((paragraph, index) => {
+                  const paragraphKey = paragraph.segments
+                    .map((segment) => segment.text)
+                    .join("");
+
+                  if (index === 0) {
+                    const { intro: mobileIntro, rest: mobileRest } =
+                      splitSegmentsAtFirstSentence(paragraph.segments);
+
+                    return (
+                      <div key={paragraphKey} className="space-y-4">
+                        <div className="flex items-start gap-4 sm:hidden">
+                          <div className="shrink-0">
+                            <MiniPortrait />
+                          </div>
+                          <p className="min-w-0 flex-1">
+                            <SummaryText segments={mobileIntro} />
+                          </p>
+                        </div>
+                        <p className="hidden sm:block">
+                          <SummaryText segments={paragraph.segments} />
+                        </p>
+                        {mobileRest.length > 0 ? (
+                          <p className="sm:hidden">
+                            <SummaryText segments={mobileRest} />
+                          </p>
+                        ) : null}
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <p key={paragraphKey}>
+                      <SummaryText segments={paragraph.segments} />
+                    </p>
+                  );
+                })}
               </div>
 
               <div className="flex flex-wrap gap-3">
