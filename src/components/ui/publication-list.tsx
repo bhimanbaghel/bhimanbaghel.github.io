@@ -160,16 +160,16 @@ function PublicationCard({
               <p
                 className={cn(
                   "text-sm leading-relaxed text-[#b4c1d4]",
-                  !expanded && "line-clamp-3",
+                  !expanded && "line-clamp-3 lg:line-clamp-none",
                 )}
               >
                 {publication.abstract}
               </p>
               <button
                 onClick={onToggle}
-                className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 transition-colors hover:text-cyan-100"
+                className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 transition-colors hover:text-cyan-100 lg:hidden"
               >
-                {expanded ? "Hide abstract" : "Show abstract"}
+                {expanded ? "Show less" : "Show more"}
               </button>
             </div>
           )}
