@@ -25,6 +25,11 @@ const categories: Category[] = [
   "Conversational AI",
 ];
 
+function getPublicationYear(publication: Publication) {
+  const match = publication.venue.match(/\b(19|20)\d{2}\b/);
+  return match ? match[0] : "Earlier";
+}
+
 function getVenueLabel(publication: Publication) {
   if (publication.format === "Findings") {
     return `Findings of ${publication.venue}`;
@@ -185,6 +190,28 @@ export const PublicationList = () => {
       ? PUBLICATIONS
       : PUBLICATIONS.filter((publication) => publication.category === activeCategory);
 
+  const groupedPublications = filtered.reduce<
+    Array<{
+      year: string;
+      items: Array<{ publication: Publication; index: number }>;
+    }>
+  >((groups, publication, index) => {
+    const year = getPublicationYear(publication);
+    const lastGroup = groups[groups.length - 1];
+
+    if (lastGroup && lastGroup.year === year) {
+      lastGroup.items.push({ publication, index });
+      return groups;
+    }
+
+    groups.push({
+      year,
+      items: [{ publication, index }],
+    });
+
+    return groups;
+  }, []);
+
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-2">
@@ -223,20 +250,31 @@ export const PublicationList = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.2 }}
-          className="space-y-4"
+          className="space-y-8"
         >
-          {filtered.map((publication, index) => (
-            <PublicationCard
-              key={`${publication.title}-${index}`}
-              publication={publication}
-              expanded={Boolean(expandedAbstracts[index])}
-              onToggle={() =>
-                setExpandedAbstracts((current) => ({
-                  ...current,
-                  [index]: !current[index],
-                }))
-              }
-            />
+          {groupedPublications.map((group) => (
+            <div key={group.year} className="space-y-4">
+              <div className="flex items-center gap-4">
+                <span className="shrink-0 text-sm font-semibold uppercase tracking-[0.24em] text-[#d7e2f0]">
+                  {group.year}
+                </span>
+                <div className="h-px flex-1 bg-gradient-to-r from-white/18 via-cyan-300/25 to-transparent" />
+              </div>
+
+              {group.items.map(({ publication, index }) => (
+                <PublicationCard
+                  key={`${publication.title}-${index}`}
+                  publication={publication}
+                  expanded={Boolean(expandedAbstracts[index])}
+                  onToggle={() =>
+                    setExpandedAbstracts((current) => ({
+                      ...current,
+                      [index]: !current[index],
+                    }))
+                  }
+                />
+              ))}
+            </div>
           ))}
         </motion.div>
       </AnimatePresence>
