@@ -12,7 +12,12 @@ export const NEWS: NewsItem[] = [
   {
     date: "Nov 2025",
     text: '🇨🇳 Attended EMNLP 2025 in China and presented "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing"',
-    link: "https://arxiv.org/abs/2503.11895",
+    links: [
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2503.11895",
+      },
+    ],
   },
   {
     date: "Oct 2025",
@@ -21,12 +26,22 @@ export const NEWS: NewsItem[] = [
   {
     date: "Aug 2025",
     text: `🎉 Paper publication - "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing" accepted in EMNLP 2025 as Findings`,
-    link: "https://arxiv.org/abs/2503.11895",
+    links: [
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2503.11895",
+      },
+    ],
   },
   {
     date: "Dec 2024",
     text: `🎉 A1 US Patent published - "Methods and systems for enabling seamless indirect interactions"`,
-    link: "https://patents.google.com/patent/US20240087575A1/en",
+    links: [
+      {
+        label: "Patent",
+        href: "https://patents.google.com/patent/US20240087575A1/en",
+      },
+    ],
   },
   {
     date: "Sept 2024",
@@ -35,37 +50,72 @@ export const NEWS: NewsItem[] = [
   {
     date: "Aug 2024",
     text: `📽️ Lightning Talk - "A Fairness Analysis of Human and AI-Generated Student Reflection Summaries" in Gender Bias in Natural Language Processing Workshop at ACL 2024`,
-    link: "https://www.youtube.com/watch?v=Mu7M7cn-MbA",
+    links: [
+      {
+        label: "Video",
+        href: "https://www.youtube.com/watch?v=Mu7M7cn-MbA",
+      },
+    ],
   },
   {
     date: "Jul 2024",
     text: `🗣️ Oral invitation - "A Fairness Analysis of Human and AI-Generated Student Reflection Summaries" in Gender Bias in Natural Language Processing Workshop at ACL 2024`,
-    link: "https://aclanthology.org/2024.gebnlp-1.5/",
+    links: [
+      {
+        label: "Paper",
+        href: "https://aclanthology.org/2024.gebnlp-1.5/",
+      },
+    ],
   },
   {
     date: "Jun 2024",
     text: `🎉 Paper publication - "A Fairness Analysis of Human and AI-Generated Student Reflection Summaries" accepted in Gender Bias in Natural Language Processing Workshop at ACL 2024`,
-    link: "https://aclanthology.org/2024.gebnlp-1.5/",
+    links: [
+      {
+        label: "Paper",
+        href: "https://aclanthology.org/2024.gebnlp-1.5/",
+      },
+    ],
   },
   {
     date: "Jun 2024",
     text: `📽️ Oral presentation - "Multimodal Understanding of Memes with Fair Explanations" @ CVPR - MULA 2024`,
-    link: "https://youtu.be/QneZ9v0THrI?si=JsiFSK1e_Cm8JUJm",
+    links: [
+      {
+        label: "Video",
+        href: "https://youtu.be/QneZ9v0THrI?si=JsiFSK1e_Cm8JUJm",
+      },
+    ],
   },
   {
     date: "May 2024",
     text: `🗣️ Oral invitation - "Multimodal Understanding of Memes with Fair Explanations" @ CVPR - MULA 2024`,
-    link: "https://ieeexplore.ieee.org/document/10677889",
+    links: [
+      {
+        label: "Paper",
+        href: "https://ieeexplore.ieee.org/document/10677889",
+      },
+    ],
   },
   {
     date: "Mar 2024",
     text: `🎉 Paper publication - "Multimodal Understanding of Memes with Fair Explanations" accepted @ CVPR - MULA 2024`,
-    link: "https://ieeexplore.ieee.org/document/10677889",
+    links: [
+      {
+        label: "Paper",
+        href: "https://ieeexplore.ieee.org/document/10677889",
+      },
+    ],
   },
   {
     date: "Feb 2024",
     text: `🎉 A1 US Patent published - "Method and system for mitigating physical risks in an IoT environment"`,
-    link: "https://patents.google.com/patent/US20230402187A1/en",
+    links: [
+      {
+        label: "Patent",
+        href: "https://patents.google.com/patent/US20230402187A1/en",
+      },
+    ],
   },
   {
     date: "Feb 2024",
@@ -94,7 +144,12 @@ export const NEWS: NewsItem[] = [
   {
     date: "Mar 2023",
     text: `🎉 A1 US Patent published - "Methods and systems for determining missing slots associated with a voice command for an advanced voice interaction"`,
-    link: "https://patents.google.com/patent/US20230077874A1/en",
+    links: [
+      {
+        label: "Patent",
+        href: "https://patents.google.com/patent/US20230077874A1/en",
+      },
+    ],
   },
   {
     date: "Mar 2023",
