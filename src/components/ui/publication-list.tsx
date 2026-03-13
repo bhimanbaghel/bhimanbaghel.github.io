@@ -24,6 +24,18 @@ const categories: Category[] = [
   "Conversational AI",
 ];
 
+function getVenueLabel(publication: Publication) {
+  if (publication.format === "Findings") {
+    return `Findings of ${publication.venue}`;
+  }
+
+  if (publication.workshop) {
+    return `${publication.workshop} at ${publication.venue}`;
+  }
+
+  return publication.venue;
+}
+
 function renderAuthors(authors: string) {
   return authors.split(", ").map((author, index, arr) => (
     <React.Fragment key={`${author}-${index}`}>
@@ -49,6 +61,7 @@ function PublicationCard({
   const venueIsPrestigious = prestigiousVenues.some((venue) =>
     publication.venue.includes(venue),
   );
+  const venueLabel = getVenueLabel(publication);
 
   return (
     <motion.article
@@ -73,11 +86,6 @@ function PublicationCard({
             <p className="text-sm leading-relaxed text-[#9eacc0]">
               {renderAuthors(publication.authors)}
             </p>
-            {publication.workshop && (
-              <p className="text-xs uppercase tracking-[0.24em] text-[#73839a]">
-                {publication.workshop}
-              </p>
-            )}
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -89,13 +97,10 @@ function PublicationCard({
                   : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
               )}
             >
-              {publication.venue}
+              {venueLabel}
             </span>
             <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
               {publication.category}
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-[#9cabc1]">
-              {publication.format}
             </span>
             {publication.isNew && (
               <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
