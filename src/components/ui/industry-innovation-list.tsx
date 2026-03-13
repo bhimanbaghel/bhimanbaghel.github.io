@@ -20,11 +20,8 @@ export function IndustryInnovationList() {
         >
           <div className="flex items-start justify-between gap-3">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.2em] text-lime-100">
-                <IconBulb className="h-3.5 w-3.5" />
-                Patent
-              </div>
-              <h3 className="text-sm font-medium leading-relaxed text-[#f2f6fb] transition-colors group-hover:text-lime-100">
+              <h3 className="inline-flex items-start gap-2 text-sm font-medium leading-relaxed text-[#f2f6fb] transition-colors group-hover:text-lime-100">
+                <IconBulb className="mt-0.5 h-4 w-4 shrink-0 text-lime-200" />
                 {item.title}
               </h3>
             </div>

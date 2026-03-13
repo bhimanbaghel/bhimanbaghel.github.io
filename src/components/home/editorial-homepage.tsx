@@ -486,7 +486,7 @@ export function EditorialHomepage() {
             >
               <SectionShell
                 eyebrow="Applied AI"
-                title="Patents & Industry Innovation"
+                title="Patents"
                 description="Patent work and production-facing research connected to conversational AI, IoT, and personalization."
               >
                 <IndustryInnovationList />
