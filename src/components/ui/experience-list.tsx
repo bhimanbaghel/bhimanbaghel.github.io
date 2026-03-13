@@ -8,7 +8,7 @@ import { experienceData } from "@/data/experience";
 
 export function ExperienceList() {
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<number, boolean>>(
-    { 0: true, 1: true },
+    {},
   );
 
   const toggleDescription = (index: number) => {

@@ -60,7 +60,7 @@ function SectionShell({
   className?: string;
 }) {
   return (
-    <section className={cn(panelClass, "p-5 sm:p-6", className)}>
+    <section className={cn(panelClass, "flex h-full flex-col p-5 sm:p-6", className)}>
       <div className="mb-5 space-y-3">
         {eyebrow && (
           <p className="text-[0.68rem] uppercase tracking-[0.28em] text-[#7b8aa0]">
@@ -446,11 +446,12 @@ export function EditorialHomepage() {
             </SectionShell>
           </motion.div>
 
-          <div className="grid gap-6 xl:grid-cols-2">
+          <div className="grid items-stretch gap-6 xl:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.32, delay: 0.24 }}
+              className="h-full"
             >
               <SectionShell
                 eyebrow="Research and Industry"
@@ -465,6 +466,7 @@ export function EditorialHomepage() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.32, delay: 0.28 }}
+              className="h-full"
             >
               <SectionShell
                 eyebrow="Academic Background"
