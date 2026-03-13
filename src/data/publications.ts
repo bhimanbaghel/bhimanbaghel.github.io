@@ -32,6 +32,9 @@ export const PUBLICATIONS: Publication[] = [
     abstract:
       "CreativityPrism introduces a holistic and scalable framework for evaluating large language model creativity across divergent thinking, creative writing, and logical reasoning. It organizes creativity around quality, novelty, and diversity, validates automatic judges against human annotations, and shows across 17 state-of-the-art models that strong performance in one creative dimension or domain rarely generalizes to others.",
     isNew: true,
+    image: "/publication/creativityprism.png",
+    imageAlt:
+      "Diagram illustrating the CreativityPrism framework.",
   },
   {
     title:
@@ -47,7 +50,6 @@ export const PUBLICATIONS: Publication[] = [
     image: "/publication/resolveunderoveredit.png",
     imageAlt:
       "Diagram illustrating iterative and neighbor-assisted model editing for resolving UnderEdit and OverEdit.",
-    isNew: true,
   },
   {
     title: "A Fairness Analysis of Human and AI-Generated Student Reflection Summaries.",
