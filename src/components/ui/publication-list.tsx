@@ -74,15 +74,9 @@ function PublicationCard({
       <div className="flex flex-col gap-4">
         <div className="space-y-3">
           <div className="space-y-2">
-            <a
-              href={publication.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-start gap-2 text-lg font-semibold leading-tight text-[#f5f8fb] transition-colors hover:text-cyan-200"
-            >
-              <span>{publication.title}</span>
-              <IconArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            <h3 className="text-lg font-semibold leading-tight text-[#f5f8fb]">
+              {publication.title}
+            </h3>
             <p className="text-sm leading-relaxed text-[#9eacc0]">
               {renderAuthors(publication.authors)}
             </p>
