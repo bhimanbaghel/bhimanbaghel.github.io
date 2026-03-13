@@ -59,60 +59,55 @@ function PublicationCard({
       className="rounded-[26px] border border-white/8 bg-[#111822]/82 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl"
     >
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
-          <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className={cn(
-                  "rounded-full border px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em]",
-                  venueIsPrestigious
-                    ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
-                    : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
-                )}
-              >
-                {publication.venue}
-              </span>
-              <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
-                {publication.category}
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-[#9cabc1]">
-                {publication.format}
-              </span>
-              {publication.isNew && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
-                  <IconSparkles className="h-3.5 w-3.5" />
-                  New
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <a
-                href={publication.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-start gap-2 text-lg font-semibold leading-tight text-[#f5f8fb] transition-colors hover:text-cyan-200"
-              >
-                <span>{publication.title}</span>
-                <IconArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <p className="text-sm leading-relaxed text-[#9eacc0]">
-                {renderAuthors(publication.authors)}
-              </p>
-              {publication.workshop && (
-                <p className="text-xs uppercase tracking-[0.24em] text-[#73839a]">
-                  {publication.workshop}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
+        <div className="space-y-3">
+          <div className="space-y-2">
             <a
               href={publication.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-[#edf3fb] transition-colors hover:border-cyan-300/30 hover:bg-cyan-300/10 hover:text-cyan-100"
+              className="group inline-flex items-start gap-2 text-lg font-semibold leading-tight text-[#f5f8fb] transition-colors hover:text-cyan-200"
+            >
+              <span>{publication.title}</span>
+              <IconArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+            <p className="text-sm leading-relaxed text-[#9eacc0]">
+              {renderAuthors(publication.authors)}
+            </p>
+            {publication.workshop && (
+              <p className="text-xs uppercase tracking-[0.24em] text-[#73839a]">
+                {publication.workshop}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <span
+              className={cn(
+                "rounded-full border px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em]",
+                venueIsPrestigious
+                  ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
+                  : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
+              )}
+            >
+              {publication.venue}
+            </span>
+            <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
+              {publication.category}
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-[#9cabc1]">
+              {publication.format}
+            </span>
+            {publication.isNew && (
+              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
+                <IconSparkles className="h-3.5 w-3.5" />
+                New
+              </span>
+            )}
+            <a
+              href={publication.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-colors hover:border-cyan-300/35 hover:bg-cyan-300/16"
             >
               Paper
               <IconArrowUpRight className="h-3.5 w-3.5" />
@@ -122,7 +117,7 @@ function PublicationCard({
                 href={publication.talkLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-[#edf3fb] transition-colors hover:border-red-400/30 hover:bg-red-400/10 hover:text-red-100"
+                className="inline-flex items-center gap-2 rounded-full border border-red-400/20 bg-red-400/10 px-3 py-1.5 text-xs font-medium text-red-100 transition-colors hover:border-red-400/35 hover:bg-red-400/16"
               >
                 Talk
                 <IconBrandYoutube className="h-3.5 w-3.5" />
