@@ -29,7 +29,7 @@ export const PUBLICATIONS: Publication[] = [
     format: "Findings",
     category: "Mechanistic Interpretability",
     abstract:
-      "We propose techniques to systematically resolve UnderEdit and OverEdit issues in model editing, improving both precision and generalization.",
+      "Large language models can be updated more efficiently through model editing, but existing methods often miss the target fact or damage nearby knowledge. This work introduces iterative and neighbor-assisted model editing to improve edit precision up to 38 percentage points and generalization up to 6, across models, algorithms, and benchmarks.",
     image: "/publication/resolveunderoveredit.png",
     imageAlt:
       "Diagram illustrating iterative and neighbor-assisted model editing for resolving UnderEdit and OverEdit.",
@@ -45,8 +45,11 @@ export const PUBLICATIONS: Publication[] = [
     format: "Workshop",
     category: "AI Fairness",
     abstract:
-      "We investigate biases in human vs AI-generated student summaries, proposing fairness metrics and improving reflection generation systems.",
+      "This study examines the fairness of human- and AI-generated summaries of student reflections in university STEM classes, focusing on potential gender biases. The analysis finds that while human-generated and extractive AI summaries do not show a clear bias, abstractive AI-generated summaries exhibit a bias toward male students by over-representing pedagogical themes from male reflections and under-representing concept-specific topics from female reflections.",
     talkLink: "https://www.youtube.com/watch?v=Mu7M7cn-MbA",
+    image: "/publication/reflectionfairness.png",
+    imageAlt:
+      "Diagram illustrating the topical difference between genders in student reflection summaries.",
   },
   {
     title: "Multimodal Understanding of Memes with Fair Explanations.",
@@ -57,8 +60,11 @@ export const PUBLICATIONS: Publication[] = [
     format: "Workshop",
     category: "AI Fairness",
     abstract:
-      "We propose methods for fair interpretation of memes by jointly modeling image and text, focusing on bias mitigation across sensitive attributes.",
+      "This work studies whether recent vision-language models can generate fair explanations for memes across different domains and topics. It contributes a unified benchmark for meme explanation and uses both semi-automatic and manual evaluation to assess explanation quality, identifying major categories of bias in model-generated meme explanations.",
     talkLink: "https://www.youtube.com/watch?v=QneZ9v0THrI",
+    image: "/publication/memeexplain.png",
+    imageAlt:
+      "Diagram illustrating the VLM input.",
   },
   {
     title:
@@ -69,7 +75,7 @@ export const PUBLICATIONS: Publication[] = [
     format: "Journal",
     category: "Conversational AI",
     abstract:
-      "We propose intent-focused semantic parsing and zero-shot out-of-domain detection strategies to enhance the robustness of spoken language understanding systems.",
+      "This work addresses zero-shot out-of-domain detection in spoken language understanding, where manually labeled OOD data is unavailable. It combines sentence-level intents and token-level intent classes from intent-focused semantic parsing with a one-class neural network classifier, achieving stronger performance than prior methods across four public datasets.",
   },
   {
     title:
@@ -80,6 +86,6 @@ export const PUBLICATIONS: Publication[] = [
     format: "Journal",
     category: "Conversational AI",
     abstract:
-      "We introduce a smart stacking approach for intent-slot extraction in multi-intent spoken language understanding tasks, improving extraction granularity.",
+      "This work tackles fine-grained multi-intent spoken language understanding, where systems must jointly identify intents and slots while modeling their local relationships at both token and utterance levels. It proposes a smart stacking ensemble built on BERT, XLNet, and ELMo multitask models, outperforming prior multi-intent systems on four public datasets at both sentence and token levels.",
   },
 ];

@@ -250,7 +250,8 @@ export const PublicationList = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.2 }}
-          className="space-y-8"
+          className="custom-scroll max-h-[52rem] space-y-8 overflow-y-auto pr-2 sm:max-h-[56rem] lg:max-h-[58rem]"
+          style={{ scrollbarGutter: "stable" }}
         >
           {groupedPublications.map((group) => (
             <div key={group.year} className="space-y-4">
