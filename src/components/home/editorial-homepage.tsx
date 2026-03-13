@@ -291,6 +291,7 @@ function ResearchHighlightCard() {
             alt="Research highlight placeholder visual"
             width={960}
             height={540}
+            priority
             className="h-44 w-full object-contain object-center sm:h-52"
           />
         </div>
