@@ -340,27 +340,41 @@ export function EditorialHomepage() {
           </motion.aside>
         </motion.section>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.58fr)_minmax(360px,0.98fr)]">
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, delay: 0.16 }}
+        <div className="mt-6 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.32, delay: 0.16 }}
+          >
+            <SectionShell
+              eyebrow="Live Timeline"
+              title="News"
+              description="Conference presentations, milestones, and recent updates."
             >
-              <SectionShell
-                eyebrow="Primary Research Record"
-                title="Publications"
-                description="Peer-reviewed work and archival publications spanning model editing, fairness, and conversational AI."
-                className="p-5 sm:p-7"
-              >
-                <PublicationList />
-              </SectionShell>
-            </motion.div>
+              <NewsList />
+            </SectionShell>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.32, delay: 0.2 }}
+          >
+            <SectionShell
+              eyebrow="Primary Research Record"
+              title="Publications"
+              description="Peer-reviewed work and archival publications spanning model editing, fairness, and conversational AI."
+              className="p-5 sm:p-7"
+            >
+              <PublicationList />
+            </SectionShell>
+          </motion.div>
+
+          <div className="grid gap-6 xl:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, delay: 0.22 }}
+              transition={{ duration: 0.32, delay: 0.24 }}
             >
               <SectionShell
                 eyebrow="Research and Industry"
@@ -370,61 +384,48 @@ export function EditorialHomepage() {
                 <ExperienceList />
               </SectionShell>
             </motion.div>
-          </div>
-
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, delay: 0.18 }}
-            >
-              <SectionShell
-                eyebrow="Live Timeline"
-                title="News & Talks"
-                description="Conference presentations, milestones, and recent updates."
-              >
-                <NewsList />
-              </SectionShell>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, delay: 0.24 }}
+              transition={{ duration: 0.32, delay: 0.28 }}
             >
               <SectionShell
                 eyebrow="Academic Background"
-                title="Education & Honors"
-                description="Training, mentorship, and recognition across research and industry."
+                title="Education"
+                description="Training, degrees, and academic mentorship across institutions."
               >
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-[#7a8ba1]">
-                      Education
-                    </h3>
-                    <EducationList />
-                  </div>
-                  <div className="space-y-3 border-t border-white/8 pt-6">
-                    <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-[#7a8ba1]">
-                      Honors
-                    </h3>
-                    <HonorsList />
-                  </div>
-                </div>
+                <EducationList />
+              </SectionShell>
+            </motion.div>
+          </div>
+
+          <div className="grid gap-6 xl:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.32, delay: 0.32 }}
+            >
+              <SectionShell
+                eyebrow="Applied AI"
+                title="Patents & Industry Innovation"
+                description="Patent work and production-facing research connected to conversational AI, IoT, and personalization."
+              >
+                <IndustryInnovationList />
               </SectionShell>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, delay: 0.3 }}
+              transition={{ duration: 0.32, delay: 0.36 }}
             >
               <SectionShell
-                eyebrow="Applied AI"
-                title="Industry Innovation"
-                description="Patent work and production-facing research connected to conversational AI, IoT, and personalization."
+                eyebrow="Recognition"
+                title="Honors"
+                description="Selected awards and recognitions across research and industry."
               >
-                <IndustryInnovationList />
+                <HonorsList />
               </SectionShell>
             </motion.div>
           </div>

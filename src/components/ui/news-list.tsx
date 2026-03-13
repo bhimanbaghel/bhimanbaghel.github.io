@@ -17,7 +17,7 @@ export const NewsList = () => {
     <div
       ref={scrollRef}
       role="region"
-      aria-label="News and Talks"
+      aria-label="News"
       className="max-h-[26rem] overflow-y-auto pr-2 custom-scroll"
     >
       <div className="relative flex flex-col gap-4 pl-5">
@@ -33,7 +33,7 @@ export const NewsList = () => {
           >
             <div className="absolute left-[-1rem] top-1.5 h-2.5 w-2.5 rounded-full border border-cyan-200/40 bg-cyan-300/80 shadow-[0_0_18px_rgba(121,218,255,0.4)]" />
             <div className="space-y-1">
-              <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#76859c]">
+              <p className="text-[0.72rem] uppercase tracking-[0.24em] text-[#76859c]">
                 {item.date}
               </p>
               {item.link ? (
@@ -41,12 +41,12 @@ export const NewsList = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm leading-relaxed text-[#edf3fb] transition-colors hover:text-cyan-100"
+                  className="text-base leading-relaxed text-[#edf3fb] transition-colors hover:text-cyan-100"
                 >
                   {item.text}
                 </a>
               ) : (
-                <p className="text-sm leading-relaxed text-[#d4ddea]">{item.text}</p>
+                <p className="text-base leading-relaxed text-[#d4ddea]">{item.text}</p>
               )}
             </div>
           </motion.div>
