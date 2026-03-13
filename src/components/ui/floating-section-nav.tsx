@@ -66,7 +66,12 @@ export function FloatingSectionNav({
         heroBottom - window.innerHeight + Math.min(window.innerHeight * 0.16, 120),
       );
       const shouldShow = window.scrollY > revealThreshold;
-      const anchorLine = window.scrollY + Math.min(window.innerHeight * 0.28, 220);
+      const anchorLine =
+        window.scrollY +
+        Math.min(window.innerHeight * 0.42, 320);
+      const nearBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 96;
 
       let nextActiveId = currentItems[0].id;
 
@@ -76,6 +81,10 @@ export function FloatingSectionNav({
         if (sectionElement && anchorLine >= sectionElement.offsetTop) {
           nextActiveId = item.id;
         }
+      }
+
+      if (nearBottom) {
+        nextActiveId = currentItems[currentItems.length - 1]?.id ?? nextActiveId;
       }
 
       setIsVisible(shouldShow);
@@ -91,7 +100,7 @@ export function FloatingSectionNav({
       window.removeEventListener("scroll", updateState);
       window.removeEventListener("resize", updateState);
     };
-  }, [currentItems, heroId]);
+  }, [currentItems, heroId, isDesktopLayout]);
 
   useEffect(() => {
     if (!isVisible || !activeId) {
