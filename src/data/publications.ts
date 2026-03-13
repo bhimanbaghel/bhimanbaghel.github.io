@@ -11,6 +11,8 @@ export interface Publication {
   format: string;
   category: PublicationCategory;
   abstract?: string;
+  image?: string;
+  imageAlt?: string;
   isNew?: boolean;
   talkLink?: string;
   workshop?: string;
@@ -28,6 +30,9 @@ export const PUBLICATIONS: Publication[] = [
     category: "Model Editing",
     abstract:
       "We propose techniques to systematically resolve UnderEdit and OverEdit issues in model editing, improving both precision and generalization.",
+    image: "/publication/resolveunderoveredit.png",
+    imageAlt:
+      "Diagram illustrating iterative and neighbor-assisted model editing for resolving UnderEdit and OverEdit.",
     isNew: true,
   },
   {

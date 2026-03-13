@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -62,6 +63,7 @@ function PublicationCard({
     publication.venue.includes(venue),
   );
   const venueLabel = getVenueLabel(publication);
+  const hasImage = Boolean(publication.image);
 
   return (
     <motion.article
@@ -71,78 +73,102 @@ function PublicationCard({
       transition={{ duration: 0.24 }}
       className="rounded-[26px] border border-white/8 bg-[#111822]/82 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl"
     >
-      <div className="flex flex-col gap-4">
-        <div className="space-y-3">
-          <div className="space-y-2">
-            <h3 className="text-lg font-semibold leading-tight text-[#f5f8fb]">
-              {publication.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-[#9eacc0]">
-              {renderAuthors(publication.authors)}
-            </p>
+      <div
+        className={cn(
+          "flex flex-col gap-4",
+          hasImage && "lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:items-stretch lg:gap-5",
+        )}
+      >
+        {hasImage ? (
+          <div className="order-last overflow-hidden rounded-[22px] border border-white/8 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.22)] lg:order-none lg:flex lg:h-full lg:min-h-[16rem] lg:items-center lg:justify-center lg:p-3">
+            <Image
+              src={publication.image!}
+              alt={publication.imageAlt ?? `${publication.title} figure`}
+              width={960}
+              height={540}
+              className="h-52 w-full object-contain object-center lg:h-full"
+            />
           </div>
+        ) : null}
 
-          <div className="flex flex-wrap gap-2">
-            <span
-              className={cn(
-                "rounded-full border px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em]",
-                venueIsPrestigious
-                  ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
-                  : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
-              )}
-            >
-              {venueLabel}
-            </span>
-            <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
-              {publication.category}
-            </span>
-            {publication.isNew && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
-                <IconSparkles className="h-3.5 w-3.5" />
-                New
+        <div className="flex flex-col gap-4">
+          <div className="space-y-3">
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold leading-tight text-[#f5f8fb]">
+                {publication.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[#9eacc0]">
+                {renderAuthors(publication.authors)}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <span
+                className={cn(
+                  "rounded-full border px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em]",
+                  venueIsPrestigious
+                    ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
+                    : "border-white/10 bg-white/[0.04] text-[#b8c5d8]",
+                )}
+              >
+                {venueLabel}
               </span>
-            )}
-            <a
-              href={publication.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-colors hover:border-cyan-300/35 hover:bg-cyan-300/16"
-            >
-              Paper
-              <IconArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-            {publication.talkLink && (
+              <span className="rounded-full border border-lime-300/20 bg-lime-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-lime-100">
+                {publication.category}
+              </span>
+              {publication.isNew && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-emerald-100">
+                  <IconSparkles className="h-3.5 w-3.5" />
+                  New
+                </span>
+              )}
               <a
-                href={publication.talkLink}
+                href={publication.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-red-400/20 bg-red-400/10 px-3 py-1.5 text-xs font-medium text-red-100 transition-colors hover:border-red-400/35 hover:bg-red-400/16"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-colors hover:border-cyan-300/35 hover:bg-cyan-300/16"
               >
-                Talk
-                <IconBrandYoutube className="h-3.5 w-3.5" />
+                Paper
+                <IconArrowUpRight className="h-3.5 w-3.5" />
               </a>
-            )}
+              {publication.talkLink && (
+                <a
+                  href={publication.talkLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-red-400/20 bg-red-400/10 px-3 py-1.5 text-xs font-medium text-red-100 transition-colors hover:border-red-400/35 hover:bg-red-400/16"
+                >
+                  Talk
+                  <IconBrandYoutube className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </div>
           </div>
-        </div>
 
-        {publication.abstract && (
-          <div className="rounded-[20px] border border-white/7 bg-[#0c1219]/80 px-4 py-3">
-            <p
+          {publication.abstract && (
+            <div
               className={cn(
-                "text-sm leading-relaxed text-[#b4c1d4]",
-                !expanded && "line-clamp-3",
+                "rounded-[20px] border border-white/7 bg-[#0c1219]/80 px-4 py-3",
+                hasImage && "hidden lg:block",
               )}
             >
-              {publication.abstract}
-            </p>
-            <button
-              onClick={onToggle}
-              className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 transition-colors hover:text-cyan-100"
-            >
-              {expanded ? "Hide abstract" : "Show abstract"}
-            </button>
-          </div>
-        )}
+              <p
+                className={cn(
+                  "text-sm leading-relaxed text-[#b4c1d4]",
+                  !expanded && "line-clamp-3",
+                )}
+              >
+                {publication.abstract}
+              </p>
+              <button
+                onClick={onToggle}
+                className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200 transition-colors hover:text-cyan-100"
+              >
+                {expanded ? "Hide abstract" : "Show abstract"}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </motion.article>
   );
