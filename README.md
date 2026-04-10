@@ -1,5 +1,7 @@
 # Bhiman Kumar Baghel - AI Research Homepage
 
+[![Portfolio Pipeline](https://github.com/bhimanbaghel/bhimanbaghel.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/bhimanbaghel/bhimanbaghel.github.io/actions/workflows/deploy.yml)
+
 A modern, research-first homepage showcasing my publications, research highlights, and academic work as a PhD student in Computer Science at the University of Pittsburgh.
 
 ## 🌟 Features
