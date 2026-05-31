@@ -2,6 +2,10 @@ import type { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {
+    date: "May 2026",
+    text: "🤖 Returned to Amazon as an Applied Scientist II Intern and moved to Seattle to work on enterprise autonomous agents.",
+  },
+  {
     date: "Mar 2026",
     text: "🎓 Passed my Ph.D. comprehensive exam, marking an important milestone in my doctoral journey.",
   },
