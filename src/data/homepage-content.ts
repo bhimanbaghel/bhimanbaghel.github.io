@@ -59,7 +59,7 @@ export const HERO_CONTENT = {
 
 export const HERO_ACTIONS: HeroAction[] = [
   {
-    label: "CV",
+    label: "Resume",
     href: "/Bhiman_Resume.pdf",
     kind: "cv",
   },

@@ -91,7 +91,7 @@ npm start
 │   └── lib/               # Utility functions
 ├── public/                # Static assets
 │   ├── bkb.png           # Profile picture
-│   ├── Bhiman_CV.pdf     # Resume/CV
+│   ├── Bhiman_Resume.pdf # Resume
 │   └── ...               # Other assets
 └── ...configuration files
 ```
@@ -112,7 +112,7 @@ npm start
 - **GitHub**: [github.com/bhimanbaghel](https://github.com/bhimanbaghel)
 - **Google Scholar**: [scholar.google.com/citations?user=ee6IULAAAAAJ](https://scholar.google.com/citations?user=ee6IULAAAAAJ&hl=en)
 - **Office**: [University of Pittsburgh](https://maps.app.goo.gl/2G2J6e3oSeX6sjis7)
-- **CV**: [Download CV](./public/Bhiman_CV.pdf)
+- **Resume**: [Download Resume](./public/Bhiman_Resume.pdf)
 
 ## 📄 License
 
