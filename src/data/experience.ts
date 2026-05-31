@@ -13,17 +13,27 @@ export const experienceData: ExperienceItem[] = [
   {
     id: 1,
     company: "Amazon",
-    position: "Applied Scientist Intern",
-    duration: "September 2025 – Present",
+    position: "Applied Scientist II Intern",
+    duration: "May 2026 – Present",
     location: "Seattle, WA, USA",
     logo: "/amazon.png",
     description: [
-      "• Selected for a competitive internship with the People eXperience and Technology Central Science (PXTCS) team.",
-      "• Internship will focus on Generative AI applications and infrastructure with emphasis on enterprise knowledge integration, while ensuring fairness and privacy are maintained."
+      "• Working on enterprise autonomous agents."
     ]
   },
   {
     id: 2,
+    company: "Amazon",
+    position: "Applied Scientist II Intern",
+    duration: "October 2025 – January 2026",
+    location: "Seattle, WA, USA",
+    logo: "/amazon.png",
+    description: [
+      "• Worked on making AI agent reasoning more capable and efficient through inference-time rule distillation."
+    ]
+  },
+  {
+    id: 3,
     company: "University of Pittsburgh",
     position: "Graduate Research Assistant",
     duration: "August 2024 – Present",
@@ -37,7 +47,7 @@ export const experienceData: ExperienceItem[] = [
     ]
   },
   {
-    id: 3 ,
+    id: 4,
     company: "Samsung Research",
     position: "Lead NLP Engineer",
     duration: "June 2019 – August 2023",
@@ -50,7 +60,7 @@ export const experienceData: ExperienceItem[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     company: "IBM",
     position: "Machine Learning Intern",
     duration: "May 2018 – July 2018",
