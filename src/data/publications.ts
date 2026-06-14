@@ -26,8 +26,8 @@ export const PUBLICATIONS: Publication[] = [
     link: "https://arxiv.org/abs/2510.20091",
     authors:
       "Zhaoyi Joey Hou, Bowei Alvin Zhang, Yining Lu, Bhiman Kumar Baghel, Anneliese Brei, Ximing Lu, Meng Jiang, Faeze Brahman, Snigdha Chaturvedi, Haw-Shiuan Chang, Daniel Khashabi, Xiang Lorraine Li",
-    venue: "arXiv, 2026",
-    format: "Preprint",
+    venue: "TMLR, 2026",
+    format: "Journal",
     category: "AI Creativity",
     abstract:
       "CreativityPrism introduces a holistic and scalable framework for evaluating large language model creativity across divergent thinking, creative writing, and logical reasoning. It organizes creativity around quality, novelty, and diversity, validates automatic judges against human annotations, and shows across 17 state-of-the-art models that strong performance in one creative dimension or domain rarely generalizes to others.",

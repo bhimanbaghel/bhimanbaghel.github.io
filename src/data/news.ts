@@ -2,6 +2,16 @@ import type { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {
+    date: "Jun 2026",
+    text: `🎉 "CreativityPrism: A Holistic Evaluation Framework for Large Language Model Creativity" was accepted to TMLR.`,
+    links: [
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2510.20091",
+      },
+    ],
+  },
+  {
     date: "May 2026",
     text: "🤖 Returned to Amazon as an Applied Scientist II Intern and moved to Seattle to work on enterprise autonomous agents.",
   },

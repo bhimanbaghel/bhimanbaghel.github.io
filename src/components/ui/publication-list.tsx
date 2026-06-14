@@ -17,7 +17,7 @@ import {
 
 export type Category = "All" | PublicationCategory;
 
-const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "EMNLP", "IEEE"];
+const prestigiousVenues = ["NeurIPS", "ICML", "ACL", "CVPR", "EMNLP", "IEEE", "TMLR"];
 const categories: Category[] = [
   "All",
   "Mechanistic Interpretability",
