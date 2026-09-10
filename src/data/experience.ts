@@ -14,7 +14,7 @@ export const experienceData: ExperienceItem[] = [
     id: 1,
     company: "Amazon",
     position: "Applied Scientist II Intern",
-    duration: "May 2026 – Present",
+    duration: "May 2026 – August 2026",
     location: "Seattle, WA, USA",
     logo: "/amazon.png",
     description: [
