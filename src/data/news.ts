@@ -3,11 +3,11 @@ import type { NewsItem } from "@/components/ui/news-list";
 export const NEWS: NewsItem[] = [
   {
     date: "Aug 2026",
-    text: "🎉 Successfully completed my second Amazon internship as an Applied Scientist II Intern.",
+    text: `🎉 "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning" was accepted as a main paper at AACL-IJCNLP 2026. Paper coming soon.`,
   },
   {
     date: "Aug 2026",
-    text: `🎉 "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning" was accepted as a main paper at AACL-IJCNLP 2026.`,
+    text: "🎉 Successfully completed my second Amazon internship as an Applied Scientist II Intern.",
   },
   {
     date: "Jun 2026",

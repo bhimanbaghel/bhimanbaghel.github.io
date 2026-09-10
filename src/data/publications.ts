@@ -6,11 +6,12 @@ export type PublicationCategory =
 
 export interface Publication {
   title: string;
-  link: string;
-  authors: string;
+  link?: string;
+  authors?: string;
   venue: string;
   format: string;
   category: PublicationCategory;
+  paperComingSoon?: boolean;
   abstract?: string;
   image?: string;
   imageAlt?: string;
@@ -20,6 +21,15 @@ export interface Publication {
 }
 
 export const PUBLICATIONS: Publication[] = [
+  {
+    title:
+      "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning.",
+    venue: "AACL-IJCNLP 2026",
+    format: "Main Paper",
+    category: "Mechanistic Interpretability",
+    paperComingSoon: true,
+    isNew: true,
+  },
   {
     title:
       "CreativityPrism: A Holistic Evaluation Framework for Large Language Model Creativity.",
