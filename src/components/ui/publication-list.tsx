@@ -103,9 +103,11 @@ function PublicationCard({
               <h3 className="text-lg font-semibold leading-tight text-[#f5f8fb]">
                 {publication.title}
               </h3>
-              <p className="text-sm leading-relaxed text-[#9eacc0]">
-                {renderAuthors(publication.authors)}
-              </p>
+              {publication.authors && (
+                <p className="text-sm leading-relaxed text-[#9eacc0]">
+                  {renderAuthors(publication.authors)}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -128,15 +130,21 @@ function PublicationCard({
                   New
                 </span>
               )}
-              <a
-                href={publication.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-colors hover:border-cyan-300/35 hover:bg-cyan-300/16"
-              >
-                Paper
-                <IconArrowUpRight className="h-3.5 w-3.5" />
-              </a>
+              {publication.link ? (
+                <a
+                  href={publication.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100 transition-colors hover:border-cyan-300/35 hover:bg-cyan-300/16"
+                >
+                  Paper
+                  <IconArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              ) : (
+                <span className="inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-medium text-cyan-100">
+                  Paper coming soon
+                </span>
+              )}
               {publication.talkLink && (
                 <a
                   href={publication.talkLink}
