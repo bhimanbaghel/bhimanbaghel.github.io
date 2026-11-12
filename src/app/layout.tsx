@@ -20,7 +20,7 @@ const GA_MEASUREMENT_ID = "G-4E1LJHS74Z";
 export const metadata: Metadata = {
   title: "Bhiman Kumar Baghel | AI Researcher and PhD Student",
   description:
-    "Bhiman Kumar Baghel is a PhD student in Computer Science at the University of Pittsburgh working on model editing, parameter-efficient reasoning, and reliable language models.",
+    "Bhiman Kumar Baghel is a PhD student in Computer Science at the University of Pittsburgh working on tool-augmented reasoning, model editing, and reliable language models.",
 };
 
 export default function RootLayout({

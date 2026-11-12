@@ -2,8 +2,14 @@ import type { NewsItem } from "@/components/ui/news-list";
 
 export const NEWS: NewsItem[] = [
   {
-    date: "Aug 2026",
-    text: `🎉 "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning" was accepted as a main paper at AACL-IJCNLP 2026. Paper coming soon.`,
+    date: "Nov 2026",
+    text: `📄 "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning" was published as a long paper at AACL–IJCNLP 2026.`,
+    links: [
+      {
+        label: "Paper",
+        href: "https://aclanthology.org/2026.aacl-long.214/",
+      },
+    ],
   },
   {
     date: "Aug 2026",
