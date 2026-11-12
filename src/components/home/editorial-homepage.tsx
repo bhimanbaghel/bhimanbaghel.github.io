@@ -303,14 +303,6 @@ function ResearchHighlightCard() {
             </a>
           ))}
         </div>
-        <div className="space-y-2">
-          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#7f90a7]">
-            Key Contribution
-          </p>
-          <p className="text-sm leading-relaxed text-[#aebacc]">
-            {RECENT_HIGHLIGHT.contribution}
-          </p>
-        </div>
         <div className="grid grid-cols-3 gap-2">
           {RECENT_HIGHLIGHT.stats.map((stat) => (
             <div

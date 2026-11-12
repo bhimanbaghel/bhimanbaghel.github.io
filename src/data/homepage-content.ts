@@ -104,8 +104,6 @@ export const RECENT_HIGHLIGHT = {
     "Peiran Yao",
     "Srinivasan H. Sengamedu",
   ],
-  contribution:
-    "GEAR turns tool-use failures into compact, compositional rules through a single meta-reasoning pass, then adds those rules directly to inference prompts. It delivers rollout-free adaptation without model training or retrieval, making advanced tool reasoning faster and more accessible for API-only and resource-constrained deployments.",
   stats: [
     { value: "78", label: "API domains" },
     { value: "4.1×", label: "lower cost vs. ACE" },
@@ -118,14 +116,6 @@ export const RECENT_HIGHLIGHT = {
     {
       label: "Paper",
       href: "https://aclanthology.org/2026.aacl-long.214/",
-    },
-    {
-      label: "PDF",
-      href: "https://aclanthology.org/2026.aacl-long.214.pdf",
-    },
-    {
-      label: "DOI",
-      href: "https://doi.org/10.18653/2026.aacl-long.214",
     },
   ] satisfies RecentHighlightLink[],
 };
