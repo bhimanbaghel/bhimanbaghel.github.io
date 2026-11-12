@@ -19,6 +19,11 @@ export interface RecentHighlightLink {
   href: string;
 }
 
+export interface RecentHighlightStat {
+  value: string;
+  label: string;
+}
+
 export const HERO_CONTENT = {
   eyebrow: "About Me",
   name: "Bhiman Kumar Baghel",
@@ -89,30 +94,38 @@ export const HERO_ACTIONS: HeroAction[] = [
 ];
 
 export const RECENT_HIGHLIGHT = {
-  venue: "EMNLP 2025 Findings",
+  venue: "AACL–IJCNLP 2026 · Long Paper",
   title:
-    "Resolving UnderEdit & OverEdit with Iterative & Neighbor-Assisted Model Editing",
+    "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning",
   authors: [
     "Bhiman Kumar Baghel",
-    "Emma Jordan",
-    "Zheyuan Ryan Shi",
-    "Xiang Lorraine Li",
+    "Fanyou Wu",
+    "Suraj Maharjan",
+    "Peiran Yao",
+    "Srinivasan H. Sengamedu",
   ],
   contribution:
-    "Large language models can be updated more efficiently through model editing, but existing methods often miss the target fact or damage nearby knowledge. This work introduces iterative and neighbor-assisted model editing to improve edit precision up to 38 percentage points and generalization up to 6, across models, algorithms, and benchmarks.",
-  image: "/highlight/highlightimage.png",
+    "GEAR turns tool-use failures into compact, compositional rules through a single meta-reasoning pass, then adds those rules directly to inference prompts. It delivers rollout-free adaptation without model training or retrieval, making advanced tool reasoning faster and more accessible for API-only and resource-constrained deployments.",
+  stats: [
+    { value: "78", label: "API domains" },
+    { value: "4.1×", label: "lower cost vs. ACE" },
+    { value: "<1 s", label: "Qwen3-30B latency" },
+  ] satisfies RecentHighlightStat[],
+  image: "/highlight/gear-framework.png",
+  imageAlt:
+    "GEAR framework: gather tool-use outcomes, extract compositional rules, and apply rule-augmented reasoning.",
   links: [
     {
-      label: "GitHub",
-      href: "https://github.com/bhimanbaghel/ResolveUnderOverEdit",
-    },
-    {
       label: "Paper",
-      href: "https://aclanthology.org/2025.findings-emnlp.798/",
+      href: "https://aclanthology.org/2026.aacl-long.214/",
     },
     {
-      label: "Talk",
-      href: "https://underline.io/lecture/132679-resolving-underedit-and-overedit-with-iterative-and-neighbor-assisted-model-editing",
+      label: "PDF",
+      href: "https://aclanthology.org/2026.aacl-long.214.pdf",
+    },
+    {
+      label: "DOI",
+      href: "https://doi.org/10.18653/2026.aacl-long.214",
     },
   ] satisfies RecentHighlightLink[],
 };

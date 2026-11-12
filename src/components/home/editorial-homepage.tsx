@@ -311,14 +311,29 @@ function ResearchHighlightCard() {
             {RECENT_HIGHLIGHT.contribution}
           </p>
         </div>
+        <div className="grid grid-cols-3 gap-2">
+          {RECENT_HIGHLIGHT.stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[18px] border border-white/8 bg-[#0c1219]/70 px-3 py-3"
+            >
+              <p className="text-lg font-semibold tracking-[-0.03em] text-cyan-100">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[0.64rem] uppercase leading-relaxed tracking-[0.14em] text-[#7f90a7]">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="overflow-hidden rounded-[24px] border border-white/10 bg-white">
           <Image
             src={RECENT_HIGHLIGHT.image}
-            alt="Research highlight placeholder visual"
-            width={960}
-            height={540}
+            alt={RECENT_HIGHLIGHT.imageAlt}
+            width={1120}
+            height={620}
             priority
-            className="h-44 w-full object-contain object-center sm:h-52"
+            className="h-auto w-full object-contain object-center"
           />
         </div>
       </div>
@@ -468,7 +483,7 @@ export function EditorialHomepage() {
               id="publications"
               eyebrow="Primary Research Record"
               title="Publications"
-              description="Peer-reviewed work and archival publications spanning mechanistic interpretability, AI fairness, conversational AI, and AI creativity."
+              description="Peer-reviewed work and archival publications spanning tool-augmented reasoning, mechanistic interpretability, AI fairness, conversational AI, and AI creativity."
               className="p-5 sm:p-7"
             >
               <PublicationList />

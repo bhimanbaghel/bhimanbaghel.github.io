@@ -1,4 +1,5 @@
 export type PublicationCategory =
+  | "Tool-Augmented Reasoning"
   | "Mechanistic Interpretability"
   | "AI Fairness"
   | "Conversational AI"
@@ -24,10 +25,17 @@ export const PUBLICATIONS: Publication[] = [
   {
     title:
       "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning.",
-    venue: "AACL-IJCNLP 2026",
-    format: "Main Paper",
-    category: "Mechanistic Interpretability",
-    paperComingSoon: true,
+    link: "https://aclanthology.org/2026.aacl-long.214/",
+    authors:
+      "Bhiman Kumar Baghel, Fanyou Wu, Suraj Maharjan, Peiran Yao, Srinivasan H. Sengamedu",
+    venue: "AACL–IJCNLP 2026",
+    format: "Long Paper",
+    category: "Tool-Augmented Reasoning",
+    abstract:
+      "GEAR is a training-free framework that learns reusable, compositional rules from tool-use failures through single-pass meta-reasoning and distills them into inference prompts. Across 78 API domains, GEAR+2-shot nearly doubles Qwen3-30B zero-shot accuracy while staying under one second of latency; on Qwen3-4B it also outperforms LoRA SFT, retrieval-augmented prompting, and the ACE context-engineering method at substantially lower cost.",
+    image: "/publication/gear-results.png",
+    imageAlt:
+      "Two charts from the GEAR paper comparing its tool-use accuracy with prompting, LoRA SFT, retrieval, and ACE baselines.",
     isNew: true,
   },
   {
