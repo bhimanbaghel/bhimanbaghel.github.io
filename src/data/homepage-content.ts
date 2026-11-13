@@ -94,28 +94,29 @@ export const HERO_ACTIONS: HeroAction[] = [
 ];
 
 export const RECENT_HIGHLIGHT = {
-  venue: "AACL–IJCNLP 2026 · Long Paper",
+  venue: "EACL 2027 · Long Paper",
   title:
-    "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning",
+    "STRIVE: Probing Reasoning Limits in Graded Plausibility Generation and Evaluation",
   authors: [
     "Bhiman Kumar Baghel",
-    "Fanyou Wu",
-    "Suraj Maharjan",
-    "Peiran Yao",
-    "Srinivasan H. Sengamedu",
+    "Anna Chrabaszcz",
+    "Tessa Warren",
+    "Michael Walsh Dickey",
+    "Haley C Dresang",
+    "Xiang Lorraine Li",
   ],
   stats: [
-    { value: "78", label: "API domains" },
-    { value: "4.1×", label: "lower cost vs. ACE" },
-    { value: "<1 s", label: "Qwen3-30B latency" },
+    { value: "60", label: "root verbs" },
+    { value: "75%", label: "high-quality sets" },
+    { value: "4.5×", label: "gain vs. baseline" },
   ] satisfies RecentHighlightStat[],
-  image: "/highlight/gear-framework.png",
+  image: "/highlight/strive-framework.png",
   imageAlt:
-    "GEAR framework: gather tool-use outcomes, extract compositional rules, and apply rule-augmented reasoning.",
+    "STRIVE framework for generating, evaluating, and refining controlled graded-plausibility sentence sets.",
   links: [
     {
       label: "Paper",
-      href: "https://aclanthology.org/2026.aacl-long.214/",
+      href: "https://openreview.net/forum?id=Rahr7YzacK",
     },
   ] satisfies RecentHighlightLink[],
 };
