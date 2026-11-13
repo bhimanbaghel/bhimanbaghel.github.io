@@ -7,7 +7,7 @@ export const NEWS: NewsItem[] = [
     links: [
       {
         label: "Paper",
-        href: "https://openreview.net/forum?id=Rahr7YzacK",
+        href: "https://openreview.net/forum?id=s7jxffyCBX",
       },
     ],
   },

@@ -26,7 +26,7 @@ export const PUBLICATIONS: Publication[] = [
   {
     title:
       "STRIVE: Probing Reasoning Limits in Graded Plausibility Generation and Evaluation.",
-    link: "https://openreview.net/forum?id=Rahr7YzacK",
+    link: "https://openreview.net/forum?id=s7jxffyCBX",
     authors:
       "Bhiman Kumar Baghel, Anna Chrabaszcz, Tessa Warren, Michael Walsh Dickey, Haley C Dresang, Xiang Lorraine Li",
     venue: "EACL 2027",
