@@ -22,6 +22,7 @@ const categories: Category[] = [
   "All",
   "Tool-Augmented Reasoning",
   "Mechanistic Interpretability",
+  "Psycholinguistics",
   "AI Fairness",
   "Conversational AI",
   "AI Creativity",

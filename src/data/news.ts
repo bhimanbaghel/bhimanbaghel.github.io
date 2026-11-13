@@ -3,6 +3,16 @@ import type { NewsItem } from "@/components/ui/news-list";
 export const NEWS: NewsItem[] = [
   {
     date: "Nov 2026",
+    text: `🎉 "STRIVE: Probing Reasoning Limits in Graded Plausibility Generation and Evaluation" was accepted as a long paper at EACL 2027.`,
+    links: [
+      {
+        label: "Paper",
+        href: "https://openreview.net/forum?id=s7jxffyCBX",
+      },
+    ],
+  },
+  {
+    date: "Nov 2026",
     text: `📄 "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning" was published as a long paper at AACL–IJCNLP 2026.`,
     links: [
       {

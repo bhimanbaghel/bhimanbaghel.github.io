@@ -475,7 +475,7 @@ export function EditorialHomepage() {
               id="publications"
               eyebrow="Primary Research Record"
               title="Publications"
-              description="Peer-reviewed work and archival publications spanning tool-augmented reasoning, mechanistic interpretability, AI fairness, conversational AI, and AI creativity."
+              description="Peer-reviewed work and archival publications spanning tool-augmented reasoning, mechanistic interpretability, psycholinguistics, AI fairness, conversational AI, and AI creativity."
               className="p-5 sm:p-7"
             >
               <PublicationList />

@@ -1,6 +1,7 @@
 export type PublicationCategory =
   | "Tool-Augmented Reasoning"
   | "Mechanistic Interpretability"
+  | "Psycholinguistics"
   | "AI Fairness"
   | "Conversational AI"
   | "AI Creativity";
@@ -22,6 +23,22 @@ export interface Publication {
 }
 
 export const PUBLICATIONS: Publication[] = [
+  {
+    title:
+      "STRIVE: Probing Reasoning Limits in Graded Plausibility Generation and Evaluation.",
+    link: "https://openreview.net/forum?id=s7jxffyCBX",
+    authors:
+      "Bhiman Kumar Baghel, Anna Chrabaszcz, Tessa Warren, Michael Walsh Dickey, Haley C Dresang, Xiang Lorraine Li",
+    venue: "EACL 2027",
+    format: "Long Paper",
+    category: "Psycholinguistics",
+    abstract:
+      "STRIVE is an LLM framework for creating and evaluating matched event-plausibility sets for psycholinguistic studies. Across six models and 60 verbs, GPT-5.1 produced high-quality sets only 16.7% of the time with a baseline prompt. A global reasoning scratchpad and evaluator-guided refinement raised that rate to 75.0%. Evaluator-human agreement also improved with greater reasoning effort, though implausible-hard cases remained challenging, where the best evaluator reached 57% accuracy.",
+    image: "/publication/strive-plausibility.png",
+    imageAlt:
+      "STRIVE example showing plausible-easy, plausible-hard, implausible-hard, and implausible-easy agents for the event of catching a soccer ball.",
+    isNew: true,
+  },
   {
     title:
       "GEAR: Training-Free Rule Distillation for Advanced and Efficient Tool-Augmented Reasoning.",
