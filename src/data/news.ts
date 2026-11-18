@@ -3,6 +3,10 @@ import type { NewsItem } from "@/components/ui/news-list";
 export const NEWS: NewsItem[] = [
   {
     date: "Nov 2026",
+    text: "🎓 I successfully defended my Ph.D. thesis proposal at the University of Pittsburgh.",
+  },
+  {
+    date: "Nov 2026",
     text: `🎉 "STRIVE: Probing Reasoning Limits in Graded Plausibility Generation and Evaluation" was accepted as a long paper at EACL 2027.`,
     links: [
       {
